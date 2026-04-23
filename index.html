@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>El Pulso Publicitario · Vibes &amp; Noticias de Agencia</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          butter:  '#FDF6E3',  // Fondo crema cálido (mantequilla)
+          cream:   '#F6EFE0',  // Crema secundaria
+          ink:     '#141414',  // Negro tinta
+          slate:   '#3D3D3D',  // Gris grafito
+          stone:   '#7A7268',  // Gris piedra cálido
+          rule:    '#E5DECA',  // Líneas sutiles
+          tomato:  '#E8412D',  // Rojo tomate (acento principal)
+          flame:   '#FF6B35',  // Naranja llama
+          lime:    '#C8E85D',  // Verde lima eléctrico
+          sky:     '#4F97D1',  // Azul cielo
+          plum:    '#6B4E7D',  // Ciruela
+          sun:     '#F5B700',  // Amarillo sol
+          mint:    '#A8E6CF',  // Menta pastel
+          rose:    '#FFB5C5',  // Rosa empolvado
+        },
+        fontFamily: {
+          display:  ['"Bricolage Grotesque"', 'sans-serif'],
+          editorial:['"Fraunces"', 'Georgia', 'serif'],
+          sans:     ['Inter', 'system-ui', 'sans-serif'],
+          mono:     ['"JetBrains Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body {
+    background: #FDF6E3;
+    color: #141414;
+    overflow-x: hidden;
+  }
+
+  /* ============ Textura granulada sutil ============ */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.06'/></svg>");
+  }
+
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: #FDF6E3; }
+  ::-webkit-scrollbar-thumb { background: #141414; border-radius: 0; border: 3px solid #FDF6E3; }
+  ::selection { background: #C8E85D; color: #141414; }
+
+  /* ============ Marquee ticker ============ */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee { display: inline-flex; animation: marquee 50s linear infinite; white-space: nowrap; }
+  .marquee:hover { animation-play-state: paused; }
+
+  /* ============ Flotación suave para stickers ============ */
+  @keyframes float-slow { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-8px) rotate(var(--r,0deg));} }
+  .float { animation: float-slow 5s ease-in-out infinite; }
+
+  /* ============ Wiggle en hover ============ */
+  @keyframes wiggle { 0%,100%{transform:rotate(0);} 25%{transform:rotate(-2deg);} 75%{transform:rotate(2deg);} }
+  .wiggle:hover { animation: wiggle 0.35s ease-in-out; }
+
+  /* ============ Pulse indicator ============ */
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(232,65,45,0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(232,65,45,0); }
+    100% { box-shadow: 0 0 0 0 rgba(232,65,45,0); }
+  }
+  .pulse { animation: pulse-dot 2s infinite; }
+
+  /* ============ Fade-up en scroll ============ */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+  .reveal { animation: fadeUp 0.8s cubic-bezier(.22,.95,.34,1) both; }
+
+  /* ============ Spinning badge ============ */
+  @keyframes spin-slow { from{transform:rotate(0);} to{transform:rotate(360deg);} }
+  .spin-slow { animation: spin-slow 16s linear infinite; }
+
+  /* ============ Cartas con "papel" effect ============ */
+  .paper-card {
+    background: #FFFCF2;
+    border: 1.5px solid #141414;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(.22,.95,.34,1), box-shadow 0.3s ease;
+  }
+  .paper-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 #141414;
+  }
+
+  /* ============ Tape decoration (cinta adhesiva) ============ */
+  .tape {
+    position: absolute;
+    width: 90px;
+    height: 22px;
+    background: rgba(245,183,0,0.85);
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    z-index: 2;
+  }
+  .tape-left {
+    left: 12px; top: -8px; transform: rotate(-8deg); width: 70px; height: 20px;
+  }
+  .tape-pink { background: rgba(255,181,197,0.9); }
+  .tape-lime { background: rgba(200,232,93,0.9); }
+
+  /* ============ Hipervínculos ============ */
+  .link-under {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .link-under::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%; height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(.22,.95,.34,1);
+  }
+  .link-under:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* ============ Bold button estilo retro ============ */
+  .btn-chunk {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: #141414;
+    color: #FDF6E3;
+    border: 1.5px solid #141414;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 999px;
+  }
+  .btn-chunk:hover {
+    transform: translate(-2px,-2px);
+    box-shadow: 4px 4px 0 #141414;
+  }
+  .btn-chunk-tomato { background: #E8412D; border-color: #141414; }
+  .btn-chunk-lime { background: #C8E85D; color:#141414; }
+  .btn-chunk-outline {
+    background: transparent; color: #141414;
+  }
+  .btn-chunk-outline:hover {
+    background: #141414; color: #FDF6E3;
+  }
+
+  /* ============ Chip category ============ */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.7rem;
+    border: 1.5px solid #141414;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: #FFFCF2;
+  }
+
+  /* ============ Drop cap juguetón ============ */
+  .fun-dropcap::first-letter {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.85;
+    padding: 0.4rem 0.7rem 0 0;
+    color: #E8412D;
+  }
+
+  /* ============ Sticky highlight ============ */
+  .highlight-sun {
+    background: linear-gradient(transparent 65%, rgba(245,183,0,0.55) 65%);
+    padding: 0 2px;
+  }
+  .highlight-lime {
+    background: linear-gradient(transparent 65%, rgba(200,232,93,0.7) 65%);
+    padding: 0 2px;
+  }
+
+  /* ============ Rotate utilities ============ */
+  .rot-n2 { transform: rotate(-2deg); }
+  .rot-2 { transform: rotate(2deg); }
+  .rot-n4 { transform: rotate(-4deg); }
+  .rot-4 { transform: rotate(4deg); }
+
+  /* ============ Squiggle divider ============ */
+  .squiggle {
+    width: 100%; height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 14'><path d='M0 7 Q 15 0 30 7 T 60 7' stroke='%23141414' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 60px 14px;
+  }
+
+  /* ============ Scroll Snap en mood cards ============ */
+  .mood-scroll {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .mood-scroll::-webkit-scrollbar { display: none; }
+  .mood-scroll > * { scroll-snap-align: start; }
+
+  /* ============ Big number display ============ */
+  .big-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    font-variation-settings: "opsz" 96;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  /* ============ Tab filtros ============ */
+  .fchip {
+    padding: 0.45rem 1rem;
+    border: 1.5px solid #141414;
+    border-radius: 999px;
+    background: #FFFCF2;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .fchip:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #141414; }
+  .fchip.active { background: #141414; color: #FDF6E3; }
+
+  /* Vinilo de sección (como un sticker circular) */
+  .vinyl {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: #141414;
+  }
+
+  /* Emoji grande sin línea */
+  .emoji-xl { font-size: 3rem; line-height: 1; }
+
+  /* Chart bar style */
+  .bar {
+    height: 28px;
+    background: #141414;
+    position: relative;
+  }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ============================================================
+     🎟️ TICKER SUPERIOR — Chismes del día
+============================================================ -->
+<div class="bg-ink text-butter py-2 overflow-hidden border-b-2 border-ink">
+  <div class="marquee text-xs font-mono uppercase tracking-[0.2em]">
+    <!-- TICKER_START -->
+    <span class="mx-6">🔥 pDOOH en 48% de campañas</span>
+    <span class="mx-6 text-lime">◉ Google activa ads en AI Mode</span>
+    <span class="mx-6">🧵 Threads aplasta a X</span>
+    <span class="mx-6 text-sun">💸 IAB · $294.6B en ad revenue</span>
+    <span class="mx-6">🎤 LinkedIn = fuente #1 en IAs B2B</span>
+    <span class="mx-6 text-mint">📉 Consumer K-shaped</span>
+    <span class="mx-6">🎬 Coinbase vuelve al in-camera</span>
+    <!-- TICKER_END -->
+    <!-- Duplicado para loop -->
+    <span class="mx-6">🔥 pDOOH en 48% de campañas</span>
+    <span class="mx-6 text-lime">◉ Google activa ads en AI Mode</span>
+    <span class="mx-6">🧵 Threads aplasta a X</span>
+    <span class="mx-6 text-sun">💸 IAB · $294.6B en ad revenue</span>
+    <span class="mx-6">🎤 LinkedIn = fuente #1 en IAs B2B</span>
+    <span class="mx-6 text-mint">📉 Consumer K-shaped</span>
+    <span class="mx-6">🎬 Coinbase vuelve al in-camera</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     🎪 MASTHEAD DIVERTIDO
+============================================================ -->
+<header class="relative pt-8 pb-4 border-b-2 border-ink overflow-hidden">
+
+  <!-- Stickers flotantes decorativos -->
+  <div class="absolute top-8 left-4 md:left-10 float hidden md:block" style="--r:-12deg;">
+    <div class="bg-tomato text-butter px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-n4">
+      Hot 🌶️
+    </div>
+  </div>
+  <div class="absolute top-14 right-6 md:right-16 float hidden md:block" style="--r:8deg; animation-delay:.5s;">
+    <div class="bg-lime px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-2">
+      Daily ⚡
+    </div>
+  </div>
+
+  <!-- Vinyl sticker giratorio -->
+  <div class="absolute top-20 right-10 md:right-28 hidden lg:block">
+    <div class="vinyl bg-sun border-2 border-ink spin-slow">
+      <span>☼ Agencia · Diaria · Fresh ☼</span>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-10 text-center relative">
+
+    <!-- Edición info -->
+    <div class="flex items-center justify-center gap-4 mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-stone">
+      <span>Edición N.º 247</span>
+      <span>✦</span>
+      <span class="text-tomato">🔴 Live</span>
+      <span>✦</span>
+      <span id="edicion-fecha-top"></span>
+    </div>
+
+    <!-- Título principal híbrido -->
+    <h1 class="font-display text-[clamp(3rem,13vw,10rem)] leading-[0.85] tracking-[-0.04em] text-ink font-semibold">
+      el <span class="font-editorial italic font-light text-tomato">pulso</span><br/>
+      publi<span class="relative">citario<span class="absolute -right-6 top-0 text-2xl md:text-4xl wiggle inline-block">✺</span></span>
+    </h1>
+
+    <p class="mt-5 font-editorial italic text-base md:text-xl text-slate">
+      <!-- Lema -->
+      "Lo que <span class="highlight-lime">no sabías ayer</span>, servido con café caliente ☕"
+    </p>
+
+    <!-- Línea ondulada divisora -->
+    <div class="squiggle mt-8 opacity-40"></div>
+  </div>
+</header>
+
+<!-- ============================================================
+     ✨ HERO DEL DÍA — Mood card con "titular estrella"
+============================================================ -->
+<section class="max-w-7xl mx-auto px-6 md:px-10 pt-10 md:pt-16">
+
+  <!-- Fecha mega editorial -->
+  <div class="flex items-end gap-6 md:gap-10 mb-12">
+    <div>
+      <span id="dia-mega" class="big-num text-[7rem] md:text-[12rem] text-ink block"></span>
+    </div>
+    <div class="pb-4 md:pb-6">
+      <p id="mes-anio-top" class="font-mono text-xs uppercase tracking-[0.25em] text-stone"></p>
+      <p id="dia-semana-top" class="font-editorial italic text-2xl md:text-4xl text-tomato mt-1"></p>
+      <p class="mt-2 text-sm text-slate font-sans">Cafecito + pulso = buen día ☕</p>
+    </div>
+
+    <!-- Sticker circular "fresh" -->
+    <div class="hidden md:flex ml-auto">
+      <div class="w-28 h-28 rounded-full bg-tomato border-2 border-ink flex items-center justify-center text-butter font-display font-bold text-sm text-center leading-tight rot-n4 wiggle">
+        ¡Fresh<br/>del día!
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       🎤 NOTA DEL DIRECTOR estilo "editorial speech bubble"
+  ============================================================ -->
+  <div class="reveal relative mb-20">
+
+    <!-- Tape decoration -->
+    <div class="tape tape-pink"></div>
+
+    <div class="paper-card p-8 md:p-14">
+
+      <div class="flex items-center gap-3 mb-6">
+        <span class="chip" style="background:#FFB5C5;">💌 Editorial</span>
+        <span class="chip">Nota del director</span>
+      </div>
+
+      <!-- [INYECTAR: titular editorial] -->
+      <h2 class="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.02em] mb-8 font-semibold">
+        El marketing se está <span class="font-editorial italic text-tomato">despresentando</span> <span class="inline-block wiggle">🫠</span>
+      </h2>
+
+      <!-- [INYECTAR: cuerpo editorial] -->
+      <p class="fun-dropcap font-editorial text-lg md:text-xl leading-[1.6] text-slate mb-5 max-w-4xl">
+        Hoy todas las señales apuntan a lo mismo: la industria quiere responder con <em>más</em>. Más contenido, más canales, más opciones, más tracking. Pero la IA colapsó el funnel, el algoritmo castiga la sobreproducción y el consumidor recesivo castiga el exceso de opciones.
+      </p>
+      <p class="font-editorial text-lg md:text-xl leading-[1.6] text-slate max-w-4xl">
+        La jugada inteligente esta semana es la opuesta: <span class="highlight-sun font-semibold">menos, pero con más certeza</span>. Menos SKUs, menos opciones en el carrito, menos producción en social, más data propia. La agencia que gane 2026 no corre detrás del trend — ayuda a sus clientes a <span class="text-tomato font-editorial italic">elegir con confianza</span>.
+      </p>
+
+      <!-- Firma estilo post-it -->
+      <div class="mt-10 flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-tomato via-sun to-lime border-2 border-ink"></div>
+        <div>
+          <p class="font-sans font-semibold text-ink">Dirección de Estrategia &amp; Innovación</p>
+          <p class="font-mono text-xs text-stone uppercase tracking-wider">Briefing diario · 09:00 AM · ☕</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     🎛️ FILTROS STICKY
+============================================================ -->
+<section class="sticky top-0 z-40 bg-butter/95 backdrop-blur border-y-2 border-ink">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-3 flex items-center gap-3 overflow-x-auto">
+    <span class="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-stone mr-2">Filtrar vibra:</span>
+    <button class="fchip active shrink-0" data-filter="all">✨ Todo</button>
+    <button class="fchip shrink-0" data-filter="medios">📺 Medios</button>
+    <button class="fchip shrink-0" data-filter="creatividad">🎨 Creatividad</button>
+    <button class="fchip shrink-0" data-filter="planning">🧠 Planning</button>
+    <button class="fchip shrink-0" data-filter="data">🔐 Data</button>
+    <button class="fchip shrink-0" data-filter="content">📱 Content</button>
+    <span class="ml-auto hidden md:inline-flex shrink-0 chip" style="background:#C8E85D;">
+      ☕ 12 min de lectura
+    </span>
+  </div>
+</section>
+
+<main class="max-w-7xl mx-auto px-6 md:px-10 py-16 space-y-28">
+
+<!-- ============================================================
+     I. MEDIOS
+============================================================ -->
+<section id="medios" data-section="medios" class="reveal">
+
+  <!-- Section Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
+    <div class="flex items-end gap-5">
+      <div class="vinyl bg-tomato text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>☼ Medios ☼ Medios ☼</span>
+      </div>
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo I</span>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Medios <span class="emoji-xl">📺</span>
+        </h2>
+      </div>
+    </div>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Digital, ATL, pDOOH y algoritmos revoltosos</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- ==== NOTICIA 01 · Google AI Mode (Principal) ==== -->
+    <article class="lg:col-span-8 paper-card p-8 md:p-10 relative" data-category="medios">
+      <div class="tape tape-lime"></div>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#C8E85D;">📺 Medios · Search</span>
+        <span class="chip" style="background:#FFB5C5;">🔥 Urgente</span>
+      </div>
+
+      <!-- [INYECTAR: titular] -->
+      <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-5 font-semibold">
+        Google activa anuncios dentro de <span class="font-editorial italic text-tomato">AI Mode</span> <span class="inline-block wiggle">🤖</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada] -->
+      <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
+        AI Max for Search se vuelve universal. Los anunciantes pueden controlar cómo la IA de Google genera y personaliza el copy — y los primeros números son <span class="highlight-lime">serios</span>.
+      </p>
+
+      <!-- Mini stats divertidas -->
+      <div class="grid grid-cols-2 gap-3 my-6">
+        <div class="bg-butter border-2 border-ink p-4 rot-n2">
+          <div class="big-num text-5xl text-tomato">+14<span class="text-2xl">%</span></div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">lift de conversión promedio</p>
+        </div>
+        <div class="bg-butter border-2 border-ink p-4 rot-2">
+          <div class="big-num text-5xl text-ink">+27<span class="text-2xl">%</span></div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">en cuentas con concordancia exacta</p>
+        </div>
+      </div>
+
+      <!-- Por qué importa -->
+      <div class="flex gap-4 items-start mt-8">
+        <span class="text-4xl shrink-0">💡</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tomato mb-1">Por qué importa</p>
+          <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
+            El keyword deja de ser el anclaje del bidding de Search. La intención conversacional lo sustituye. Quien no adapte sus asset groups perderá CPA en silencio.
+          </p>
+        </div>
+      </div>
+
+      <!-- Acción sugerida (estilo post-it) -->
+      <div class="mt-8 bg-sun border-2 border-ink p-5 rot-n2 shadow-[4px_4px_0_#141414]">
+        <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink mb-2">🎯 Acción sugerida · Hoy</p>
+        <!-- [INYECTAR: acción] -->
+        <p class="font-editorial text-base md:text-lg text-ink leading-snug">
+          Auditar cuentas Top 5 de Google Ads y activar AI Max en una campaña piloto antes de que el mercado lo absorba como baseline.
+        </p>
+      </div>
+
+      <!-- Botones de enlace -->
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://seafoammedia.com/april-2026-marketing-news/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Leer fuente original
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/results?search_query=Google+AI+Mode+Ads+2026+demo" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver referencia visual 👀
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 02 · pDOOH (Secundaria) ==== -->
+    <article class="lg:col-span-4 paper-card p-7 relative" data-category="medios" style="background:#FFB5C5;">
+      <div class="tape tape-lime"></div>
+
+      <div class="flex items-center gap-2 mb-4">
+        <span class="chip">📍 OOH · Programática</span>
+      </div>
+
+      <div class="big-num text-[6rem] md:text-[7rem] text-ink leading-none mb-1">48<span class="text-tomato">%</span></div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-5">de campañas globales · 18 meses</p>
+
+      <!-- [INYECTAR: titular 02] -->
+      <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
+        pDOOH cruzó el umbral. <span class="font-editorial italic">Game changed</span>.
+      </h3>
+
+      <!-- [INYECTAR: bajada 02] -->
+      <p class="font-editorial text-base leading-relaxed text-slate mb-5">
+        El 89% de los anunciantes ya lo planea dentro de su actividad programática, frente al 37% en 2023.
+      </p>
+
+      <div class="flex gap-3 items-start mt-6">
+        <span class="text-3xl">⚠️</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-1">Por qué importa</p>
+          <p class="font-editorial text-sm leading-relaxed text-slate">
+            Si tu media plan sigue tratando pDOOH como extra de OOH tradicional, estás en 2023.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-butter border-2 border-ink p-4">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">🎯 Acción</p>
+        <!-- [INYECTAR: acción 02] -->
+        <p class="font-editorial text-sm text-ink leading-snug">
+          Rediseñar templates de media plan. Probar triggers contextuales con retail, QSR y automotriz.
+        </p>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="https://ppc.land/pdooh-investment-set-to-surge-44-as-programmatic-takes-over-half-of-campaigns/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">
+          → Leer fuente (PPC.land)
+        </a>
+        <a href="https://www.google.com/search?q=pDOOH+dynamic+creative+weather+triggered+billboard&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">
+          → Ver referencia visual
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 03 · IAB revenue (brief horizontal) ==== -->
+    <article class="lg:col-span-12 paper-card p-7 md:p-9 relative bg-ink text-butter border-ink" data-category="medios" style="background:#141414; color:#FDF6E3;">
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+        <div class="md:col-span-3">
+          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-lime">📊 Cifra del día</span>
+          <div class="big-num text-[5rem] md:text-[6rem] leading-none mt-2 text-butter">
+            $294<span class="text-lime">.6B</span>
+          </div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">Ad Revenue 2025 · +13.9% YoY</p>
+        </div>
+
+        <div class="md:col-span-5 md:border-l md:border-stone md:pl-8">
+          <!-- [INYECTAR: titular 03] -->
+          <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-3">
+            IAB confirma: <span class="font-editorial italic text-lime">social domina</span> con $117.7B (+32.6%)
+          </h3>
+          <!-- [INYECTAR: bajada 03] -->
+          <p class="font-editorial text-base text-butter/80 leading-relaxed">
+            Reporte PwC / IAB del 17 de abril. Social captura el 40% del total. Creator economy: $37B → $44B proyectado 2026.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 md:border-l md:border-stone md:pl-8">
+          <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-2">🎯 Acción sugerida</p>
+          <!-- [INYECTAR: acción 03] -->
+          <p class="font-editorial text-sm text-butter leading-snug mb-4">
+            Armar un one-pager con estos datos para el próximo review de clientes con TV tradicional &gt; $500k anuales.
+          </p>
+          <div class="flex flex-col gap-1.5">
+            <a href="https://www.mediapost.com/publications/article/414357/iab-ad-revenue-reaches-2946b-in-2025.html" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+              → Leer fuente (MediaPost)
+            </a>
+            <a href="https://www.google.com/search?q=IAB+PwC+2025+Internet+Advertising+Revenue+Report&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+              → Ver referencia visual
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     II. CREATIVIDAD
+============================================================ -->
+<section id="creatividad" data-section="creatividad" class="reveal">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
+    <div class="flex items-end gap-5">
+      <div class="vinyl bg-lime text-ink border-2 border-ink shrink-0 spin-slow">
+        <span>♡ Craft ♡ Craft ♡ Craft ♡</span>
+      </div>
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo II</span>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Creatividad <span class="emoji-xl">🎨</span>
+        </h2>
+      </div>
+    </div>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Campañas, casos y los brutos del craft</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- ==== NOTICIA 04 · Realidad cruda (Principal) ==== -->
+    <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="creatividad">
+      <div class="tape"></div>
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip" style="background:#FFB5C5;">🎨 Tendencia · Social</span>
+        <span class="chip">🌱 Emergente</span>
+      </div>
+
+      <!-- [INYECTAR: titular 04] -->
+      <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
+        La <span class="font-editorial italic text-tomato">realidad cruda</span> es el nuevo lenguaje <span class="inline-block wiggle">📼</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada 04] -->
+      <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
+        El contenido pulido pierde. TikTok y Reels recompensan lo que se siente <span class="highlight-sun">honesto, con tensión y narrativa humana</span>.
+      </p>
+
+      <!-- Comparación visual divertida -->
+      <div class="grid grid-cols-2 gap-4 my-6">
+        <div class="bg-butter border-2 border-ink p-4 rot-n2">
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mb-2">❌ Ya fue</p>
+          <p class="font-editorial italic text-slate line-through">Video pulido, aspiracional, 4K, sliders cinemáticos</p>
+        </div>
+        <div class="bg-lime border-2 border-ink p-4 rot-2">
+          <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">✅ Funciona</p>
+          <p class="font-editorial italic text-ink">Cámara en mano, talento real, tensión, imperfección</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start mt-8">
+        <span class="text-4xl shrink-0">💡</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
+          <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
+            El briefing tradicional ("queremos algo pulido y aspiracional") se convirtió en un anti-brief. Marcas líderes como Bumble, Jacquemus y Vaseline ya están ahí.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-rose border-2 border-ink p-5 rot-2 shadow-[4px_4px_0_#141414]">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">🎯 Acción sugerida</p>
+        <!-- [INYECTAR: acción 04] -->
+        <p class="font-editorial text-base md:text-lg text-ink leading-snug">
+          Dividir piezas en "Brand Film" (CTV/cine, alto acabado) vs. "Native Social" (imperfecto, talento real). Vender a dos clientes el concepto <em>anti-producción intencional</em>.
+        </p>
+      </div>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://favoured.co.uk/tiktok-trend-report-april-2026-%F0%9F%93%8A/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Leer fuente original
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/results?search_query=Bumble+Pete+Davidson+Elsie+Hewitt+2026+campaign" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver referencia visual 👀
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 05 · Coinbase in-camera (Secundaria) ==== -->
+    <article class="lg:col-span-5 paper-card p-8 relative" data-category="creatividad" style="background:#141414; color:#FDF6E3;">
+      <div class="tape" style="background: rgba(200,232,93,0.9);"></div>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🎬 Caso · Craft</span>
+      </div>
+
+      <!-- [INYECTAR: titular 05] -->
+      <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
+        Coinbase vuelve al <span class="font-editorial italic text-lime">in-camera</span> como antídoto al AI sameness
+      </h3>
+
+      <!-- [INYECTAR: bajada 05] -->
+      <p class="font-editorial italic text-base leading-relaxed text-butter/80 mb-6">
+        'Your Way Out', dirigida por Oscar Hudson, se rodó con técnicas 100% físicas: trajes 2D-printed, sets pixelados por impresión en lugar de CGI.
+      </p>
+
+      <!-- Ilustración ASCII divertida -->
+      <div class="my-6 p-4 bg-stone/20 border border-stone font-mono text-xs leading-tight text-lime whitespace-pre text-center">
+┌──────────────────┐
+│  ▓▓▒▒░░  NPC  ░░▒▒▓▓  │
+│   ⬤     your way      │
+│         out →         │
+└──────────────────┘</div>
+
+      <div class="flex gap-3 items-start">
+        <span class="text-3xl shrink-0">💡</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-1">Por qué importa</p>
+          <p class="font-editorial text-base leading-relaxed text-butter/85">
+            Contra-movimiento al CGI fácil. El craft físico diferencia cuando todos pueden prompt-generar video.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-lime text-ink border-2 border-ink p-4">
+        <p class="font-mono text-[10px] uppercase tracking-wider mb-1">🎯 Acción</p>
+        <!-- [INYECTAR: acción 05] -->
+        <p class="font-editorial text-sm leading-snug">
+          Incluir "in-camera authenticity" en pitches premium (lujo, automotriz, fintech). Que lidere el director de arte, no producción.
+        </p>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="https://www.thegonetwork.com/articles/the-best-marketing-campaigns-of-2026---monthly-review-2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+          → Leer fuente (The Go Network)
+        </a>
+        <a href="https://www.youtube.com/results?search_query=Coinbase+Your+Way+Out+NPC+commercial+Oscars+2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+          → Ver referencia visual (YouTube)
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     III. PLANNING
+============================================================ -->
+<section id="planning" data-section="planning" class="reveal">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
+    <div class="flex items-end gap-5">
+      <div class="vinyl bg-sky text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>✦ Brains ✦ Brains ✦</span>
+      </div>
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo III</span>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Planning <span class="emoji-xl">🧠</span>
+        </h2>
+      </div>
+    </div>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Insights del consumidor · Señales macro</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- ==== NOTICIA 06 · K-shaped consumer ==== -->
+    <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="planning" style="background:#A8E6CF;">
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip">🧠 Insight consumidor</span>
+        <span class="chip" style="background:#FDF6E3;">📉 Macroeconomía</span>
+      </div>
+
+      <!-- [INYECTAR: titular 06] -->
+      <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
+        El consumidor <span class="font-editorial italic text-plum">K-shaped</span> llegó con mindset recesivo <span class="inline-block wiggle">📉</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada 06] -->
+      <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
+        Gartner y Harris Poll lo confirman este mes: la mayoría percibe que EE.UU. está en recesión, y casi la mitad reporta que su seguridad financiera empeora.
+      </p>
+
+      <!-- Chart bars fun -->
+      <div class="space-y-4 my-7">
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="font-mono text-[11px] uppercase tracking-wider">Precios = preocupación #1</span>
+            <span class="big-num text-3xl text-plum">37%</span>
+          </div>
+          <div class="bar" style="width:37%; background:#6B4E7D;"></div>
+        </div>
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="font-mono text-[11px] uppercase tracking-wider">Seguridad financiera empeora</span>
+            <span class="big-num text-3xl text-tomato">~50%</span>
+          </div>
+          <div class="bar" style="width:50%; background:#E8412D;"></div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start mt-8">
+        <span class="text-4xl shrink-0">💡</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-plum mb-1">Por qué importa</p>
+          <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
+            El "consumidor promedio" dejó de servir. Hay que segmentar por <em>mindset</em>: inflacionario (maximizar valor) vs. recesivo (recortar y priorizar certeza).
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-ink text-butter p-5 rot-n2 shadow-[4px_4px_0_#141414]">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-2">🎯 Acción sugerida</p>
+        <!-- [INYECTAR: acción 06] -->
+        <p class="font-editorial text-base md:text-lg leading-snug">
+          Actualizar personas con eje "certidumbre vs. aspiración". FMCG: valor garantizado. Lujo: exclusividad emocional.
+        </p>
+      </div>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://www.customerexperiencedive.com/news/6-customer-experience-trends-2026/808761/" target="_blank" rel="noopener noreferrer" class="btn-chunk">
+          Leer fuente original
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
+        </a>
+        <a href="https://www.google.com/search?q=K-shaped+economy+consumer+spending+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver referencia visual 👀
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 07 · Decision fatigue ==== -->
+    <article class="lg:col-span-5 paper-card p-7 relative" data-category="planning">
+      <div class="tape tape-left tape-lime"></div>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#F5B700;">🛒 E-commerce</span>
+      </div>
+
+      <div class="text-center my-4">
+        <div class="big-num text-[8rem] text-tomato leading-none">85<span class="text-4xl">%</span></div>
+        <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">abandona carritos por indecisión</p>
+      </div>
+
+      <!-- [INYECTAR: titular 07] -->
+      <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
+        Parálisis de decisión: la marca ahora es <span class="font-editorial italic">decision partner</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada 07] -->
+      <p class="font-editorial text-base leading-relaxed text-slate mb-6">
+        76% se siente abrumado por demasiadas opciones. Menos es más, literalmente.
+      </p>
+
+      <div class="flex gap-3 items-start">
+        <span class="text-3xl shrink-0">⚠️</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
+          <p class="font-editorial text-sm leading-relaxed text-slate">
+            E-commerce sigue sumando SKUs, features y CTAs. La data pide lo opuesto: clarity over volume.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-lime border-2 border-ink p-4">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-1">🎯 Acción</p>
+        <!-- [INYECTAR: acción 07] -->
+        <p class="font-editorial text-sm text-ink leading-snug">
+          Auditoría de decision fatigue: reducir SKUs destacados, agregar comparadores con IA, usar proxies de confianza.
+        </p>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="https://minders.io/2026-predictions-consumer-trends-shaping-the-marketing-landscape/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Leer fuente (Minders)
+        </a>
+        <a href="https://www.google.com/search?q=cart+abandonment+decision+fatigue+UX+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Ver referencia visual
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     IV. DATA
+============================================================ -->
+<section id="data" data-section="data" class="reveal">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
+    <div class="flex items-end gap-5">
+      <div class="vinyl bg-plum text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>※ Data ※ Privacy ※</span>
+      </div>
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo IV</span>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Data <span class="emoji-xl">🔐</span>
+        </h2>
+      </div>
+    </div>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Privacidad · Medición · Automatización</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- ==== NOTICIA 08 · Brecha medición (ALERTA) ==== -->
+    <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="data" style="background:#E8412D; color:#FDF6E3;">
+
+      <!-- Stickerote "alerta" giratorio -->
+      <div class="absolute -top-6 -right-6 bg-sun border-2 border-ink w-24 h-24 rounded-full flex items-center justify-center font-display font-bold text-ink text-center text-xs leading-tight wiggle rot-4 shadow-[4px_4px_0_#141414] z-10">
+        ¡Alerta<br/>roja!<br/>🚨
+      </div>
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🔐 Data · URGENTE</span>
+        <span class="flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-sun pulse"></span> Atención inmediata
+        </span>
+      </div>
+
+      <!-- [INYECTAR: titular 08] -->
+      <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
+        Las plataformas te están <span class="font-editorial italic">mintiendo</span> (sin querer) 🫣
+      </h3>
+
+      <!-- [INYECTAR: bajada 08] -->
+      <p class="font-editorial italic text-lg text-butter/90 mb-7 leading-relaxed">
+        Documentado esta semana: las plataformas reportan una fracción de las conversiones reales que registra el CRM.
+      </p>
+
+      <!-- Comparación visual de conversiones -->
+      <div class="space-y-3 my-7 font-mono text-sm">
+        <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">Meta</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:33%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">40</span>
+        </div>
+        <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">Google</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:29%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">35</span>
+        </div>
+        <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">TikTok</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:18%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">22</span>
+        </div>
+        <div class="flex items-center gap-3 bg-lime border-2 border-ink p-3 text-ink">
+          <span class="w-20 text-xs uppercase tracking-wider font-bold">CRM 💯</span>
+          <div class="flex-1 bg-ink/20 h-6 relative overflow-hidden">
+            <div class="bg-ink h-full" style="width:100%;"></div>
+          </div>
+          <span class="w-12 text-right font-bold big-num text-xl">120</span>
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-start mt-8">
+        <span class="text-4xl shrink-0">🚨</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-sun mb-1">Por qué importa</p>
+          <p class="font-editorial text-base md:text-lg leading-relaxed text-butter">
+            Hay clientes cortando budget porque "no performa", cuando <em>sí performa</em> pero no se mide. Riesgo reputacional #1 del trimestre.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-butter text-ink p-5 border-2 border-ink shadow-[4px_4px_0_#141414]">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-2">🎯 Acción · Prioridad ALTA</p>
+        <!-- [INYECTAR: acción 08] -->
+        <p class="font-editorial text-base md:text-lg leading-snug">
+          Auditoría obligatoria esta semana de Consent Mode v2 + server-side tracking en todas las cuentas. Armar one-pager para proteger al equipo ante clientes.
+        </p>
+      </div>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://secureprivacy.ai/blog/privacy-laws-2026" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-lime">
+          Leer fuente original
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
+        </a>
+        <a href="https://www.google.com/search?q=Consent+Mode+v2+server-side+tracking+architecture&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk" style="background:#FDF6E3; color:#141414;">
+          Ver referencia visual 👀
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 09 · Leyes estatales ==== -->
+    <article class="lg:col-span-5 paper-card p-7 relative" data-category="data">
+      <div class="tape tape-pink"></div>
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip" style="background:#4F97D1; color:#FDF6E3; border-color:#141414;">⚖️ Regulatorio · US</span>
+      </div>
+
+      <!-- Estados como stamps -->
+      <div class="flex gap-2 flex-wrap mb-5">
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-n2 font-bold">Kentucky</span>
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-2 font-bold">Rhode Island</span>
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-n2 font-bold">Indiana</span>
+      </div>
+
+      <!-- [INYECTAR: titular 09] -->
+      <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
+        Nueva ola de leyes estatales de <span class="font-editorial italic text-plum">privacidad</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada 09] -->
+      <p class="font-editorial text-base leading-relaxed text-slate mb-6">
+        Aplican a empresas con data de 100k+ consumidores. Indiana grace period hasta julio 2026. Reconocimiento obligatorio de Global Privacy Control.
+      </p>
+
+      <div class="flex gap-3 items-start">
+        <span class="text-3xl shrink-0">⚠️</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
+          <p class="font-editorial text-sm leading-relaxed text-slate">
+            Clientes con operación multi-estado US necesitan revisar su stack <em>ya</em>. "Esperamos a ver" = riesgo legal.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-sky text-butter border-2 border-ink p-4">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-butter mb-1">🎯 Acción</p>
+        <!-- [INYECTAR: acción 09] -->
+        <p class="font-editorial text-sm leading-snug">
+          Alerta formal esta semana a los 8-10 clientes con exposición US. Due-diligence legal antes de junio.
+        </p>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="https://www.whitecase.com/insight-alert/privacy-and-cybersecurity-2025-2026-insights-challenges-and-trends-ahead" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Leer fuente (White &amp; Case)
+        </a>
+        <a href="https://www.google.com/search?q=US+state+privacy+laws+2026+map&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Ver mapa de leyes US 🗺️
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     V. CONTENT & SOCIAL
+============================================================ -->
+<section id="content" data-section="content" class="reveal">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
+    <div class="flex items-end gap-5">
+      <div class="vinyl bg-rose text-ink border-2 border-ink shrink-0 spin-slow">
+        <span>♫ Vibes ♫ Audio ♫</span>
+      </div>
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo V</span>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Content <span class="font-editorial italic font-light">&amp;</span> Social <span class="emoji-xl">📱</span>
+        </h2>
+      </div>
+    </div>
+    <p class="font-editorial italic text-stone text-base md:text-lg">TikTok · Reels · Creadores y audios que van a explotar</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- ==== NOTICIA 10 · Threads > X ==== -->
+    <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="content">
+      <div class="tape tape-pink"></div>
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip" style="background:#C8E85D;">📱 Plataforma · Giro</span>
+      </div>
+
+      <!-- Versus visual grande -->
+      <div class="flex items-center justify-between gap-4 my-6 bg-butter border-2 border-ink p-6">
+        <div class="text-center flex-1">
+          <div class="big-num text-5xl md:text-7xl text-ink">Threads</div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-lime bg-ink px-2 py-1 inline-block mt-2">👑 Ganador</p>
+        </div>
+        <div class="font-editorial italic text-4xl md:text-6xl text-tomato">&gt;</div>
+        <div class="text-center flex-1">
+          <div class="big-num text-5xl md:text-7xl text-stone line-through">X</div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">👋 Bye</p>
+        </div>
+      </div>
+
+      <!-- [INYECTAR: titular 10] -->
+      <h3 class="font-display text-2xl md:text-4xl leading-[1.05] tracking-[-0.02em] font-semibold mb-4">
+        Threads supera a X en <span class="font-editorial italic text-tomato">DAU móvil</span>
+      </h3>
+
+      <!-- [INYECTAR: bajada 10] -->
+      <p class="font-editorial italic text-base md:text-lg text-slate mb-7 leading-relaxed">
+        Confirmado esta semana. La plataforma de Meta cruzó definitivamente a X en usuarios activos diarios móviles.
+      </p>
+
+      <div class="flex gap-4 items-start">
+        <span class="text-4xl shrink-0">⚡</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
+          <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
+            Seguir armando "estrategias X" por inercia en 2026 = haber ignorado Instagram en 2015. Bonus: LinkedIn = fuente #1 en IAs B2B.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-mint border-2 border-ink p-5 rot-2 shadow-[4px_4px_0_#141414]">
+        <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">🎯 Acción sugerida</p>
+        <!-- [INYECTAR: acción 10] -->
+        <p class="font-editorial text-base md:text-lg text-ink leading-snug">
+          Piloto de 90 días en Threads para 3 clientes con presencia fuerte en X. Mismo equipo, voz más conversacional y menos reactiva.
+        </p>
+      </div>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://www.b2the7.com/news-blog/marketing-trends-april-20-2026" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Leer fuente original
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
+        </a>
+        <a href="https://www.google.com/search?q=Threads+vs+X+daily+active+users+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver el chart 👀
+        </a>
+      </div>
+    </article>
+
+    <!-- ==== NOTICIA 11 · TikTok playlist (PLAYLIST STYLE!) ==== -->
+    <article class="lg:col-span-5 paper-card p-7 relative" data-category="content" style="background:#6B4E7D; color:#FDF6E3;">
+
+      <div class="flex items-center gap-2 mb-5 flex-wrap">
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🎵 Playlist semanal</span>
+      </div>
+
+      <p class="font-mono text-[10px] uppercase tracking-wider text-rose mb-2">Coachella W2 · 17–19 abril</p>
+
+      <!-- [INYECTAR: titular 11] -->
+      <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-6">
+        Los audios que <span class="font-editorial italic text-lime">van a explotar</span> esta semana
+      </h3>
+
+      <!-- Lista estilo Spotify -->
+      <ol class="space-y-3 mb-6 bg-butter/10 p-4 border border-butter/30">
+        <li class="flex items-center gap-3 pb-3 border-b border-butter/20">
+          <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">1</span>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-butter truncate">Loving Life Again</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Ella Langley · Feel-good</p>
+          </div>
+          <span class="text-xs text-butter/60">🎧</span>
+        </li>
+        <li class="flex items-center gap-3 pb-3 border-b border-butter/20">
+          <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">2</span>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-butter truncate">Self Aware</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Temper City · 434K videos</p>
+          </div>
+          <span class="text-xs text-butter/60">🎧</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">3</span>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-butter truncate">2 On (slowed)</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Tinashe · Beater Car Reveal</p>
+          </div>
+          <span class="text-xs text-butter/60">🎧</span>
+        </li>
+      </ol>
+
+      <div class="flex gap-3 items-start">
+        <span class="text-3xl shrink-0">⏰</span>
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-rose mb-1">Por qué importa</p>
+          <p class="font-editorial text-sm leading-relaxed text-butter/90">
+            Ventana útil de un trend: <em>7 días</em>. Hoy identificas, mañana ruedas, jueves publicas, viernes estás en peak.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-lime text-ink border-2 border-ink p-4">
+        <p class="font-mono text-[10px] uppercase tracking-wider mb-1">🎯 Acción · HOY</p>
+        <!-- [INYECTAR: acción 11] -->
+        <p class="font-editorial text-sm leading-snug">
+          Trend sprint de 30 min · 5 PM · con content. Salir con 3 conceptos rodables para beauty, beverage y fashion.
+        </p>
+      </div>
+
+      <div class="mt-5 flex flex-col gap-2">
+        <a href="https://newengen.com/insights/april-2026-tiktok-trends/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+          → Leer fuente (New Engen)
+        </a>
+        <a href="https://www.tiktok.com/search?q=%23CoachellaFits2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+          → Ver #CoachellaFits2026 🌴
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     🎲 MOOD BOARD FINAL — Recap del día en stickers
+============================================================ -->
+<section class="reveal">
+  <div class="flex items-end gap-4 mb-8 pb-4 border-b-2 border-ink">
+    <div>
+      <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Extra</span>
+      <h2 class="font-display font-semibold text-4xl md:text-5xl tracking-[-0.03em] leading-none mt-1">
+        Mood del día <span class="emoji-xl">🎲</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    <div class="paper-card p-5 rot-n2" style="background:#C8E85D;">
+      <div class="emoji-xl mb-2">🔥</div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Rating del día</p>
+      <p class="font-display text-2xl font-semibold mt-1">Picante</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">La data está sacudiendo todos los tableros.</p>
+    </div>
+    <div class="paper-card p-5 rot-2" style="background:#FFB5C5;">
+      <div class="emoji-xl mb-2">☕</div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Energía equipo</p>
+      <p class="font-display text-2xl font-semibold mt-1">Triple espresso</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Hay mucho por reaccionar esta semana.</p>
+    </div>
+    <div class="paper-card p-5 rot-n2" style="background:#F5B700;">
+      <div class="emoji-xl mb-2">🎯</div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Prioridad #1</p>
+      <p class="font-display text-2xl font-semibold mt-1">Auditar Data</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Consent Mode v2 antes de viernes.</p>
+    </div>
+    <div class="paper-card p-5 rot-2" style="background:#A8E6CF;">
+      <div class="emoji-xl mb-2">🚀</div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Oportunidad</p>
+      <p class="font-display text-2xl font-semibold mt-1">Threads · AI Mode</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Dos canales aún "early mover".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     🎁 CAJA FINAL — Water cooler talk
+============================================================ -->
+<section class="reveal paper-card p-8 md:p-12 relative" style="background:#141414; color:#FDF6E3;">
+  <div class="tape" style="background:#C8E85D;"></div>
+
+  <div class="text-center max-w-3xl mx-auto">
+    <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-lime mb-4">☕ Water cooler talk</p>
+    <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-6">
+      ¿Qué tema vas a llevar al <span class="font-editorial italic text-lime">lunch</span> hoy?
+    </h3>
+    <p class="font-editorial italic text-lg text-butter/80 mb-8">
+      Escoge tu favorita del día y tírala cuando alguien diga "¿qué hay de nuevo?".
+      Te vas a ver muy inteligente 😎
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <span class="chip" style="background:#C8E85D; color:#141414;">"Google ya puso ads en AI Mode"</span>
+      <span class="chip" style="background:#FFB5C5; color:#141414;">"Threads acabó con X"</span>
+      <span class="chip" style="background:#F5B700; color:#141414;">"Nadie mide bien conversiones"</span>
+      <span class="chip" style="background:#A8E6CF; color:#141414;">"El consumidor está K-shaped"</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     🎬 FOOTER
+============================================================ -->
+<footer class="border-t-2 border-ink mt-10">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="font-display font-semibold text-2xl mb-2">El Pulso Publicitario <span class="text-tomato">✺</span></div>
+      <p class="font-editorial italic text-stone">Inteligencia diaria para quienes no pueden darse el lujo de llegar tarde.</p>
+    </div>
+    <div class="font-mono text-xs text-stone space-y-1.5 uppercase tracking-wider">
+      <p class="text-ink font-semibold">Próxima edición</p>
+      <p>Mañana 09:00 h</p>
+      <p>Ventana: 24h</p>
+      <p>Fuentes hoy: 47</p>
+    </div>
+    <div class="font-mono text-xs text-stone space-y-1.5 uppercase tracking-wider">
+      <p class="text-ink font-semibold">Clasificación</p>
+      <p>Confidencial · Interno</p>
+      <p>Directores &amp; Leads</p>
+      <p class="text-tomato">© 2026 · Made with ♥ + ☕</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     ⚙️ SCRIPTS
+============================================================ -->
+<script>
+  // Fecha dinámica
+  (function(){
+    const hoy = new Date();
+    const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    const dia = String(hoy.getDate()).padStart(2,'0');
+    const mes = meses[hoy.getMonth()];
+    const anio = hoy.getFullYear();
+    const dSemana = dias[hoy.getDay()];
+
+    document.getElementById('edicion-fecha-top').textContent = `${dSemana}, ${dia} ${mes} ${anio}`;
+    document.getElementById('dia-mega').textContent = dia;
+    document.getElementById('mes-anio-top').textContent = `${mes} · ${anio}`;
+    document.getElementById('dia-semana-top').textContent = dSemana;
+  })();
+
+  // Filtros
+  const chips = document.querySelectorAll('.fchip');
+  const articles = document.querySelectorAll('article[data-category]');
+  const sections = document.querySelectorAll('section[data-section]');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+
+      if (f === 'all') {
+        articles.forEach(a => a.style.display = '');
+        sections.forEach(s => s.style.display = '');
+      } else {
+        articles.forEach(a => {
+          a.style.display = a.dataset.category === f ? '' : 'none';
+        });
+        sections.forEach(s => {
+          s.style.display = s.dataset.section === f ? '' : 'none';
+        });
+      }
+    });
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
