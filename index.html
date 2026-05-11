@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>El Pulso Publicitario · Edición 8 Mayo 2026</title>
+<title>El Pulso Publicitario · Edición 11 Mayo 2026</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -16,20 +16,20 @@
     theme: {
       extend: {
         colors: {
-          butter:  '#FDF6E3',
-          cream:   '#F6EFE0',
-          ink:     '#141414',
-          slate:   '#3D3D3D',
-          stone:   '#7A7268',
-          rule:    '#E5DECA',
-          tomato:  '#E8412D',
-          flame:   '#FF6B35',
-          lime:    '#C8E85D',
-          sky:     '#4F97D1',
-          plum:    '#6B4E7D',
-          sun:     '#F5B700',
-          mint:    '#A8E6CF',
-          rose:    '#FFB5C5',
+          butter:  '#FDF6E3',  // Fondo crema cálido (mantequilla)
+          cream:   '#F6EFE0',  // Crema secundaria
+          ink:     '#141414',  // Negro tinta
+          slate:   '#3D3D3D',  // Gris grafito
+          stone:   '#7A7268',  // Gris piedra cálido
+          rule:    '#E5DECA',  // Líneas sutiles
+          tomato:  '#E8412D',  // Rojo tomate (acento principal)
+          flame:   '#FF6B35',  // Naranja llama
+          lime:    '#C8E85D',  // Verde lima eléctrico
+          sky:     '#4F97D1',  // Azul cielo
+          plum:    '#6B4E7D',  // Ciruela
+          sun:     '#F5B700',  // Amarillo sol
+          mint:    '#A8E6CF',  // Menta pastel
+          rose:    '#FFB5C5',  // Rosa empolvado
         },
         fontFamily: {
           display:  ['"Bricolage Grotesque"', 'sans-serif'],
@@ -43,213 +43,384 @@
 </script>
 
 <style>
-  body { background: #FDF6E3; color: #141414; overflow-x: hidden; }
+  body {
+    background: #FDF6E3;
+    color: #141414;
+    overflow-x: hidden;
+  }
+
+  /* ============ Textura granulada sutil ============ */
   body::after {
-    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
-    opacity: 0.35; mix-blend-mode: multiply;
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.06'/></svg>");
   }
+
   ::-webkit-scrollbar { width: 12px; }
   ::-webkit-scrollbar-track { background: #FDF6E3; }
   ::-webkit-scrollbar-thumb { background: #141414; border-radius: 0; border: 3px solid #FDF6E3; }
   ::selection { background: #C8E85D; color: #141414; }
+
+  /* ============ Marquee ticker ============ */
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .marquee { display: inline-flex; animation: marquee 50s linear infinite; white-space: nowrap; }
   .marquee:hover { animation-play-state: paused; }
+
+  /* ============ Flotación suave para stickers ============ */
   @keyframes float-slow { 0%,100%{transform:translateY(0) rotate(var(--r,0deg));} 50%{transform:translateY(-8px) rotate(var(--r,0deg));} }
   .float { animation: float-slow 5s ease-in-out infinite; }
+
+  /* ============ Wiggle en hover ============ */
   @keyframes wiggle { 0%,100%{transform:rotate(0);} 25%{transform:rotate(-2deg);} 75%{transform:rotate(2deg);} }
   .wiggle:hover { animation: wiggle 0.35s ease-in-out; }
+
+  /* ============ Pulse indicator ============ */
   @keyframes pulse-dot {
     0% { box-shadow: 0 0 0 0 rgba(232,65,45,0.6); }
     70% { box-shadow: 0 0 0 12px rgba(232,65,45,0); }
     100% { box-shadow: 0 0 0 0 rgba(232,65,45,0); }
   }
   .pulse { animation: pulse-dot 2s infinite; }
+
+  /* ============ Fade-up en scroll ============ */
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
   .reveal { animation: fadeUp 0.8s cubic-bezier(.22,.95,.34,1) both; }
+
+  /* ============ Spinning badge ============ */
   @keyframes spin-slow { from{transform:rotate(0);} to{transform:rotate(360deg);} }
   .spin-slow { animation: spin-slow 16s linear infinite; }
+
+  /* ============ Cartas con "papel" effect ============ */
   .paper-card {
-    background: #FFFCF2; border: 1.5px solid #141414; position: relative;
+    background: #FFFCF2;
+    border: 1.5px solid #141414;
+    position: relative;
     transition: transform 0.3s cubic-bezier(.22,.95,.34,1), box-shadow 0.3s ease;
   }
-  .paper-card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 #141414; }
-  .tape {
-    position: absolute; width: 90px; height: 22px;
-    background: rgba(245,183,0,0.85); top: -10px; left: 50%;
-    transform: translateX(-50%) rotate(-3deg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08); z-index: 2;
+  .paper-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 #141414;
   }
-  .tape-left { left: 12px; top: -8px; transform: rotate(-8deg); width: 70px; height: 20px; }
+
+  /* ============ Tape decoration (cinta adhesiva) ============ */
+  .tape {
+    position: absolute;
+    width: 90px;
+    height: 22px;
+    background: rgba(245,183,0,0.85);
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    z-index: 2;
+  }
+  .tape-left {
+    left: 12px; top: -8px; transform: rotate(-8deg); width: 70px; height: 20px;
+  }
   .tape-pink { background: rgba(255,181,197,0.9); }
   .tape-lime { background: rgba(200,232,93,0.9); }
-  .link-under { position: relative; color: inherit; text-decoration: none; display: inline-block; }
+
+  /* ============ Hipervínculos ============ */
+  .link-under {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+  }
   .link-under::after {
-    content: ""; position: absolute; left: 0; bottom: -2px;
-    width: 100%; height: 2px; background: currentColor;
-    transform: scaleX(0); transform-origin: right;
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%; height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
     transition: transform 0.35s cubic-bezier(.22,.95,.34,1);
   }
   .link-under:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* ============ Bold button estilo retro ============ */
   .btn-chunk {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.1rem; background: #141414; color: #FDF6E3;
-    border: 1.5px solid #141414; font-family: 'Inter', sans-serif;
-    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: #141414;
+    color: #FDF6E3;
+    border: 1.5px solid #141414;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 999px;
   }
-  .btn-chunk:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 #141414; }
+  .btn-chunk:hover {
+    transform: translate(-2px,-2px);
+    box-shadow: 4px 4px 0 #141414;
+  }
   .btn-chunk-tomato { background: #E8412D; border-color: #141414; }
   .btn-chunk-lime { background: #C8E85D; color:#141414; }
-  .btn-chunk-outline { background: transparent; color: #141414; }
-  .btn-chunk-outline:hover { background: #141414; color: #FDF6E3; }
+  .btn-chunk-outline {
+    background: transparent; color: #141414;
+  }
+  .btn-chunk-outline:hover {
+    background: #141414; color: #FDF6E3;
+  }
+
+  /* ============ Chip category ============ */
   .chip {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    padding: 0.25rem 0.7rem; border: 1.5px solid #141414;
-    border-radius: 999px; font-family: 'Inter', sans-serif;
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
-    text-transform: uppercase; background: #FFFCF2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.7rem;
+    border: 1.5px solid #141414;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: #FFFCF2;
   }
+
+  /* ============ Drop cap juguetón ============ */
   .fun-dropcap::first-letter {
-    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
-    float: left; font-size: 4.5rem; line-height: 0.85;
-    padding: 0.4rem 0.7rem 0 0; color: #E8412D;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800;
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.85;
+    padding: 0.4rem 0.7rem 0 0;
+    color: #E8412D;
   }
-  .highlight-sun { background: linear-gradient(transparent 65%, rgba(245,183,0,0.55) 65%); padding: 0 2px; }
-  .highlight-lime { background: linear-gradient(transparent 65%, rgba(200,232,93,0.7) 65%); padding: 0 2px; }
+
+  /* ============ Sticky highlight ============ */
+  .highlight-sun {
+    background: linear-gradient(transparent 65%, rgba(245,183,0,0.55) 65%);
+    padding: 0 2px;
+  }
+  .highlight-lime {
+    background: linear-gradient(transparent 65%, rgba(200,232,93,0.7) 65%);
+    padding: 0 2px;
+  }
+
+  /* ============ Rotate utilities ============ */
   .rot-n2 { transform: rotate(-2deg); }
   .rot-2 { transform: rotate(2deg); }
   .rot-n4 { transform: rotate(-4deg); }
   .rot-4 { transform: rotate(4deg); }
+
+  /* ============ Squiggle divider ============ */
   .squiggle {
     width: 100%; height: 14px;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 14'><path d='M0 7 Q 15 0 30 7 T 60 7' stroke='%23141414' stroke-width='1.5' fill='none'/></svg>");
-    background-repeat: repeat-x; background-size: 60px 14px;
+    background-repeat: repeat-x;
+    background-size: 60px 14px;
   }
+
+  /* ============ Scroll Snap en mood cards ============ */
+  .mood-scroll {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .mood-scroll::-webkit-scrollbar { display: none; }
+  .mood-scroll > * { scroll-snap-align: start; }
+
+  /* ============ Big number display ============ */
   .big-num {
-    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 300;
-    letter-spacing: -0.04em; line-height: 0.85; font-variation-settings: "opsz" 96;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    font-variation-settings: "opsz" 96;
   }
+
   html { scroll-behavior: smooth; }
+
+  /* ============ Tab filtros ============ */
   .fchip {
-    padding: 0.45rem 1rem; border: 1.5px solid #141414; border-radius: 999px;
-    background: #FFFCF2; font-family: 'Inter', sans-serif; font-size: 0.7rem;
-    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+    padding: 0.45rem 1rem;
+    border: 1.5px solid #141414;
+    border-radius: 999px;
+    background: #FFFCF2;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
   }
   .fchip:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #141414; }
   .fchip.active { background: #141414; color: #FDF6E3; }
+
+  /* Vinilo de sección (como un sticker circular) */
   .vinyl {
-    width: 120px; height: 120px; border-radius: 50%;
+    width: 120px; height: 120px;
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Inter', sans-serif; text-transform: uppercase;
-    font-weight: 700; letter-spacing: 0.12em; font-size: 0.7rem; color: #141414;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: #141414;
   }
+
+  /* Emoji grande sin línea */
   .emoji-xl { font-size: 3rem; line-height: 1; }
-  .bar { height: 28px; background: #141414; position: relative; }
+
+  /* Chart bar style */
+  .bar {
+    height: 28px;
+    background: #141414;
+    position: relative;
+  }
 </style>
 </head>
 <body class="font-sans antialiased">
 
 <!-- ============================================================
-     🎟️ TICKER SUPERIOR — Noticias flash del día
-     [INYECTAR: 7 titulares cortos con emoji — duplicar bloque para loop]
+     🎟️ TICKER SUPERIOR — Chismes del día
 ============================================================ -->
 <div class="bg-ink text-butter py-2 overflow-hidden border-b-2 border-ink">
   <div class="marquee text-xs font-mono uppercase tracking-[0.2em]">
-    <span class="mx-6">🤖 Meta construye agente AI "Hatch"</span>
-    <span class="mx-6 text-lime">📺 Video digital supera $80B en EEUU</span>
-    <span class="mx-6">🎬 Billie Eilish invade Roblox hoy</span>
-    <span class="mx-6 text-sun">📊 WARC reinventa la medición creativa</span>
-    <span class="mx-6">🎯 Social video supera a CTV por primera vez</span>
-    <span class="mx-6 text-mint">💰 Meta supera a Google en ad revenue 2026</span>
-    <span class="mx-6">🔬 IA: de experimento a operacional en video</span>
-    <!-- Duplicado para loop infinito -->
-    <span class="mx-6">🤖 Meta construye agente AI "Hatch"</span>
-    <span class="mx-6 text-lime">📺 Video digital supera $80B en EEUU</span>
-    <span class="mx-6">🎬 Billie Eilish invade Roblox hoy</span>
-    <span class="mx-6 text-sun">📊 WARC reinventa la medición creativa</span>
-    <span class="mx-6">🎯 Social video supera a CTV por primera vez</span>
-    <span class="mx-6 text-mint">💰 Meta supera a Google en ad revenue 2026</span>
-    <span class="mx-6">🔬 IA: de experimento a operacional en video</span>
+    <!-- TICKER_START -->
+    <span class="mx-6">🎬 Amazon Upfront HOY 6:30pm NYC</span>
+    <span class="mx-6 text-lime">⚽ Adidas "Backyard Legends" · Chalamet+Messi+Bad Bunny</span>
+    <span class="mx-6">🤝 LinkedIn + Amazon DSP = CTV ads B2B</span>
+    <span class="mx-6 text-sun">💬 ChatGPT abre Ads Manager self-serve CPC</span>
+    <span class="mx-6">🔍 Claude entra a búsqueda local vs. Google</span>
+    <span class="mx-6 text-mint">🇮🇳 Netflix India → Omnicom gana ₹300cr</span>
+    <span class="mx-6">📊 Mundial 2026 = $10.5B en ad spend adicional</span>
+    <!-- TICKER_END -->
+    <!-- Duplicado para loop -->
+    <span class="mx-6">🎬 Amazon Upfront HOY 6:30pm NYC</span>
+    <span class="mx-6 text-lime">⚽ Adidas "Backyard Legends" · Chalamet+Messi+Bad Bunny</span>
+    <span class="mx-6">🤝 LinkedIn + Amazon DSP = CTV ads B2B</span>
+    <span class="mx-6 text-sun">💬 ChatGPT abre Ads Manager self-serve CPC</span>
+    <span class="mx-6">🔍 Claude entra a búsqueda local vs. Google</span>
+    <span class="mx-6 text-mint">🇮🇳 Netflix India → Omnicom gana ₹300cr</span>
+    <span class="mx-6">📊 Mundial 2026 = $10.5B en ad spend adicional</span>
   </div>
 </div>
 
 <!-- ============================================================
-     🎪 MASTHEAD
+     🎪 MASTHEAD DIVERTIDO
 ============================================================ -->
 <header class="relative pt-8 pb-4 border-b-2 border-ink overflow-hidden">
+
+  <!-- Stickers flotantes decorativos -->
   <div class="absolute top-8 left-4 md:left-10 float hidden md:block" style="--r:-12deg;">
-    <div class="bg-tomato text-butter px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-n4">Hot 🌶️</div>
+    <div class="bg-tomato text-butter px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-n4">
+      Hot 🌶️
+    </div>
   </div>
   <div class="absolute top-14 right-6 md:right-16 float hidden md:block" style="--r:8deg; animation-delay:.5s;">
-    <div class="bg-lime px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-2">Daily ⚡</div>
+    <div class="bg-lime px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider border-2 border-ink rot-2">
+      Daily ⚡
+    </div>
   </div>
+
+  <!-- Vinyl sticker giratorio -->
   <div class="absolute top-20 right-10 md:right-28 hidden lg:block">
-    <div class="vinyl bg-sun border-2 border-ink spin-slow"><span>☼ Agencia · Diaria · Fresh ☼</span></div>
+    <div class="vinyl bg-sun border-2 border-ink spin-slow">
+      <span>☼ Agencia · Diaria · Fresh ☼</span>
+    </div>
   </div>
+
   <div class="max-w-7xl mx-auto px-6 md:px-10 text-center relative">
+
+    <!-- Edición info -->
     <div class="flex items-center justify-center gap-4 mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-stone">
-      <!-- [INYECTAR_EDICION: número de edición] -->
-      <span>Edición N.º 248</span>
+      <span>Edición N.º 249</span>
       <span>✦</span>
       <span class="text-tomato">🔴 Live</span>
       <span>✦</span>
       <span id="edicion-fecha-top"></span>
     </div>
+
+    <!-- Título principal híbrido -->
     <h1 class="font-display text-[clamp(3rem,13vw,10rem)] leading-[0.85] tracking-[-0.04em] text-ink font-semibold">
       el <span class="font-editorial italic font-light text-tomato">pulso</span><br/>
       publi<span class="relative">citario<span class="absolute -right-6 top-0 text-2xl md:text-4xl wiggle inline-block">✺</span></span>
     </h1>
+
     <p class="mt-5 font-editorial italic text-base md:text-xl text-slate">
+      <!-- Lema -->
       "Lo que <span class="highlight-lime">no sabías ayer</span>, servido con café caliente ☕"
     </p>
+
+    <!-- Línea ondulada divisora -->
     <div class="squiggle mt-8 opacity-40"></div>
   </div>
 </header>
 
 <!-- ============================================================
-     ✨ HERO — Fecha + Nota del Director
+     ✨ HERO DEL DÍA — Mood card con "titular estrella"
 ============================================================ -->
 <section class="max-w-7xl mx-auto px-6 md:px-10 pt-10 md:pt-16">
+
+  <!-- Fecha mega editorial -->
   <div class="flex items-end gap-6 md:gap-10 mb-12">
-    <div><span id="dia-mega" class="big-num text-[7rem] md:text-[12rem] text-ink block"></span></div>
+    <div>
+      <span id="dia-mega" class="big-num text-[7rem] md:text-[12rem] text-ink block"></span>
+    </div>
     <div class="pb-4 md:pb-6">
       <p id="mes-anio-top" class="font-mono text-xs uppercase tracking-[0.25em] text-stone"></p>
       <p id="dia-semana-top" class="font-editorial italic text-2xl md:text-4xl text-tomato mt-1"></p>
       <p class="mt-2 text-sm text-slate font-sans">Cafecito + pulso = buen día ☕</p>
     </div>
+
+    <!-- Sticker circular "fresh" -->
     <div class="hidden md:flex ml-auto">
-      <div class="w-28 h-28 rounded-full bg-tomato border-2 border-ink flex items-center justify-center text-butter font-display font-bold text-sm text-center leading-tight rot-n4 wiggle">¡Fresh<br/>del día!</div>
+      <div class="w-28 h-28 rounded-full bg-tomato border-2 border-ink flex items-center justify-center text-butter font-display font-bold text-sm text-center leading-tight rot-n4 wiggle">
+        ¡Fresh<br/>del día!
+      </div>
     </div>
   </div>
 
-  <!-- 🎤 NOTA DEL DIRECTOR -->
+  <!-- ============================================================
+       🎤 NOTA DEL DIRECTOR estilo "editorial speech bubble"
+  ============================================================ -->
   <div class="reveal relative mb-20">
+
+    <!-- Tape decoration -->
     <div class="tape tape-pink"></div>
+
     <div class="paper-card p-8 md:p-14">
+
       <div class="flex items-center gap-3 mb-6">
         <span class="chip" style="background:#FFB5C5;">💌 Editorial</span>
         <span class="chip">Nota del director</span>
       </div>
-      <!-- [INYECTAR_EDITORIAL_TITULAR] -->
+
+      <!-- [INYECTAR: titular editorial] -->
       <h2 class="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.02em] mb-8 font-semibold">
-        La IA ya no espera permiso: <span class="font-editorial italic text-tomato">opera, compra y vende sola</span> <span class="inline-block wiggle">🤖</span>
+        Los Upfronts 2026 se juegan en <span class="font-editorial italic text-tomato">data y tech</span>, no solo en contenido <span class="inline-block wiggle">🎯</span>
       </h2>
-      <!-- [INYECTAR_EDITORIAL_CUERPO_P1] -->
+
+      <!-- [INYECTAR: cuerpo editorial] -->
       <p class="fun-dropcap font-editorial text-lg md:text-xl leading-[1.6] text-slate mb-5 max-w-4xl">
-        El IAB acaba de confirmar que el gasto en video digital en EE.UU. superará los $80 mil millones en 2026, creciendo un 11% interanual — casi un 20% más rápido que el mercado publicitario total. Pero el número no es lo más importante: lo importante es lo que lo impulsa. La IA pasó esta semana de ser una promesa a ser infraestructura operativa. Dos tercios de los compradores de video digital ya están ejecutando, probando o planificando activamente la IA agéntica para sus campañas. El briefing manual de medios tiene los días contados.
+        Esta noche, Amazon Ads presenta su Upfront en el Beacon Theatre de Nueva York. Pero a diferencia de los upfronts tradicionales, Alan Moss venderá una combinación de inventario premium (Prime Video, NBA, NFL, Wondery) con <span class="highlight-lime">capacidades de ad tech que ningún otro streamer puede igualar</span>. Su authenticated graph alcanza el 90% de hogares USA. Y con LinkedIn, pueden vender targeting B2B en CTV.
       </p>
-      <!-- [INYECTAR_EDITORIAL_CUERPO_P2] -->
       <p class="font-editorial text-lg md:text-xl leading-[1.6] text-slate max-w-4xl">
-        En paralelo, Meta está construyendo un agente AI llamado <span class="highlight-sun font-semibold">'Hatch'</span> y una herramienta de compras agentizada para Instagram donde los usuarios completan compras sin salir del feed. El comercio social acaba de mutar en algo diferente. Hoy el equipo tiene una sola pregunta urgente: <span class="text-tomato font-editorial italic">¿estamos pensando para máquinas o solo para personas?</span>
+        Mientras tanto, Adidas lanzó "Backyard Legends" con Timothée Chalamet, Messi y Bad Bunny — el film que define la temporada del Mundial 2026. OpenAI abrió su Ads Manager self-serve para ChatGPT. Y Anthropic prueba búsqueda local con Claude usando Google Maps API. <span class="text-tomato font-editorial italic">La pregunta hoy no es "¿qué contenido comprar?", sino "¿qué infraestructura de datos necesitamos para competir en 2027?"</span>
       </p>
+
+      <!-- Firma estilo post-it -->
       <div class="mt-10 flex items-center gap-4">
         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-tomato via-sun to-lime border-2 border-ink"></div>
         <div>
-          <!-- [INYECTAR_DIRECTOR_NOMBRE] -->
           <p class="font-sans font-semibold text-ink">Dirección de Estrategia &amp; Innovación</p>
           <p class="font-mono text-xs text-stone uppercase tracking-wider">Briefing diario · 09:00 AM · ☕</p>
         </div>
@@ -270,7 +441,9 @@
     <button class="fchip shrink-0" data-filter="planning">🧠 Planning</button>
     <button class="fchip shrink-0" data-filter="data">🔐 Data</button>
     <button class="fchip shrink-0" data-filter="content">📱 Content</button>
-    <span class="ml-auto hidden md:inline-flex shrink-0 chip" style="background:#C8E85D;">☕ 14 min de lectura</span>
+    <span class="ml-auto hidden md:inline-flex shrink-0 chip" style="background:#C8E85D;">
+      ☕ 13 min de lectura
+    </span>
   </div>
 </section>
 
@@ -280,147 +453,176 @@
      I. MEDIOS
 ============================================================ -->
 <section id="medios" data-section="medios" class="reveal">
+
+  <!-- Section Header -->
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
     <div class="flex items-end gap-5">
-      <div class="vinyl bg-tomato text-butter border-2 border-ink shrink-0 spin-slow"><span>☼ Medios ☼ Medios ☼</span></div>
+      <div class="vinyl bg-tomato text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>☼ Medios ☼ Medios ☼</span>
+      </div>
       <div>
         <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo I</span>
-        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">Medios <span class="emoji-xl">📺</span></h2>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Medios <span class="emoji-xl">📺</span>
+        </h2>
       </div>
     </div>
-    <p class="font-editorial italic text-stone text-base md:text-lg">Video digital, CTV, Social Commerce y IA agéntica</p>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Upfronts · CTV · DSPs y el nuevo ecosistema programático</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- NOTICIA M1 · Video digital $80B (PRINCIPAL) -->
+    <!-- ==== NOTICIA 01 · Google AI Mode (Principal) ==== -->
     <article class="lg:col-span-8 paper-card p-8 md:p-10 relative" data-category="medios">
       <div class="tape tape-lime"></div>
-      <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#C8E85D;">📺 Medios · Video Digital</span>
-        <span class="chip" style="background:#FFB5C5;">🔥 Urgente</span>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#C8E85D;">📺 Medios · Upfronts</span>
+        <span class="chip" style="background:#FFB5C5;">🔥 HOY · 6:30pm ET</span>
       </div>
-      <!-- [INYECTAR_M1_TITULAR] -->
+
+      <!-- [INYECTAR: titular] -->
       <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-5 font-semibold">
-        Video digital supera <span class="font-editorial italic text-tomato">$80B</span> y derrota a la TV lineal <span class="inline-block wiggle">📺</span>
+        Amazon Ads presenta su Upfront <span class="font-editorial italic text-tomato">esta noche</span>: 300M audiencia + 90% hogares USA <span class="inline-block wiggle">🎬</span>
       </h3>
-      <!-- [INYECTAR_M1_BAJADA] -->
+
+      <!-- [INYECTAR: bajada] -->
       <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
-        El IAB confirma esta semana: el gasto en video digital en EE.UU. superará los $80 mil millones en 2026, creciendo un 11% interanual — <span class="highlight-lime">casi un 20% más rápido que el mercado total</span> — y representando por primera vez más del 60% del gasto en TV y video.
+        A las 6:30 PM ET de hoy, Amazon Ads presenta su tercer Upfront anual en el Beacon Theatre de NYC. Alan Moss mostrará el portfolio completo de Prime Video, Prime Sports (NBA, NFL, NASCAR), Twitch, Wondery y Amazon Music. El pitch central: <span class="highlight-lime">contenido premium + authenticated reach + IA agéntica</span>.
       </p>
-      <!-- Mini stats -->
+
+      <!-- Mini stats divertidas -->
       <div class="grid grid-cols-2 gap-3 my-6">
         <div class="bg-butter border-2 border-ink p-4 rot-n2">
-          <div class="big-num text-5xl text-tomato">13<span class="text-2xl">%</span></div>
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">Crecimiento social video YoY — supera a CTV por primera vez</p>
+          <div class="big-num text-5xl text-tomato">300<span class="text-2xl">M</span></div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">Audiencia mensual ad-supported USA</p>
         </div>
         <div class="bg-butter border-2 border-ink p-4 rot-2">
-          <div class="big-num text-5xl text-ink">85<span class="text-2xl">%</span></div>
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">Pequeños anunciantes ya invierten en CTV (era 60% en 2024)</p>
+          <div class="big-num text-5xl text-ink">90<span class="text-2xl">%</span></div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">Hogares USA con authenticated graph</p>
         </div>
       </div>
+
       <!-- Por qué importa -->
       <div class="flex gap-4 items-start mt-8">
         <span class="text-4xl shrink-0">💡</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-tomato mb-1">Por qué importa</p>
-          <!-- [INYECTAR_M1_IMPORTA] -->
           <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
-            Las agencias deben replantear los planes de medios que priorizan la calidad editorial del entorno sobre la precisión del targeting. El inventario fragmentado de CTV ya no es barrera de entrada — los clientes pequeños y medianos están en ese canal con plataformas self-serve. Además, por primera vez el targeting (+10 pts YoY) superó a la calidad del contenido como criterio #1 para compra de TV y video.
+            Amazon es el único player que combina: inventario propio premium, acceso programático a Netflix/Roku/Disney/Spotify desde un solo DSP, señales de compra de retail first-party, y herramientas Full-Funnel con IA. Los upfronts dejaron de ser solo sobre contenido — son sobre infraestructura de datos.
           </p>
         </div>
       </div>
-      <!-- Acción -->
+
+      <!-- Acción sugerida (estilo post-it) -->
       <div class="mt-8 bg-sun border-2 border-ink p-5 rot-n2 shadow-[4px_4px_0_#141414]">
         <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-ink mb-2">🎯 Acción sugerida · Hoy</p>
-        <!-- [INYECTAR_M1_ACCION] -->
+        <!-- [INYECTAR: acción] -->
         <p class="font-editorial text-base md:text-lg text-ink leading-snug">
-          Revisar los media plans vigentes con clientes que tengan presencia en video. Proponer al menos una campaña de CTV social integrado aprovechando targeting de primera parte, y documentar el argumento con los datos del IAB para justificar la recomendación ante el cliente.
+          Ver el livestream del Amazon Upfront esta noche. Tomar notas de los nuevos formatos interactivos y casos de Full-Funnel Campaigns. Preparar deck comparando Amazon DSP vs. otros DSPs para el equipo de cuentas.
         </p>
       </div>
+
+      <!-- Botones de enlace -->
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <!-- [INYECTAR_M1_FUENTE_URL] -->
-        <a href="https://www.iab.com/news/u-s-digital-video-ad-spend-to-surpass-80b-in-2026/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
-          Leer fuente original
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H4M9 3V8"/></svg>
+        <a href="https://advertising.amazon.com/events/upfronts" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Ver Upfront (livestream)
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
         </a>
-        <!-- [INYECTAR_M1_VISUAL_URL] -->
-        <a href="https://martech.org/digital-video-ad-spend-surges-as-ai-and-targeting-reshape-strategy/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">Ver referencia visual 👀</a>
+        <a href="https://www.thekeyword.co/news/amazon-ads-2026-upfront-aa6c3" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver análisis previo 👀
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA M2 · Meta Hatch + Instagram Shopping (SECUNDARIA) -->
+    <!-- ==== NOTICIA 02 · pDOOH (Secundaria) ==== -->
     <article class="lg:col-span-4 paper-card p-7 relative" data-category="medios" style="background:#FFB5C5;">
       <div class="tape tape-lime"></div>
-      <div class="flex items-center gap-2 mb-4 flex-wrap">
-        <span class="chip">🤖 Meta · Social Commerce</span>
+
+      <div class="flex items-center gap-2 mb-4">
+        <span class="chip">🤝 Partnership · B2B CTV</span>
       </div>
-      <div class="big-num text-[4rem] md:text-[5rem] text-ink leading-none mb-1">Hatch<span class="text-tomato">.</span></div>
-      <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-5">El agente AI de Meta · Q4 2026</p>
-      <!-- [INYECTAR_M2_TITULAR] -->
+
+      <div class="big-num text-[6rem] md:text-[7rem] text-ink leading-none mb-1">LI<span class="text-tomato">+</span>Az</div>
+      <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-5">LinkedIn CTV Ads via Amazon DSP · 7 mayo</p>
+
+      <!-- [INYECTAR: titular 02] -->
       <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
-        Meta lanza agente AI y convierte Instagram en <span class="font-editorial italic">punto de venta autónomo</span>
+        LinkedIn + Amazon DSP: <span class="font-editorial italic">targeting B2B en CTV</span>
       </h3>
-      <!-- [INYECTAR_M2_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 02] -->
       <p class="font-editorial text-base leading-relaxed text-slate mb-5">
-        Meta construye 'Hatch', un agente AI y una herramienta de shopping para Instagram que permite ver productos, hacer consultas con IA y completar compras dentro del Reels sin salir de la app. Respuesta directa a TikTok Shop. Lanzamiento: Q4 2026.
+        Señales first-party de +1B miembros de LinkedIn (job title, industry, seniority) ahora disponibles en streaming TV via Amazon DSP. Ads CTV de LinkedIn alcanzan B2B audiences 2.2x mejor que otras plataformas CTV.
       </p>
+
       <div class="flex gap-3 items-start mt-6">
         <span class="text-3xl">⚠️</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-1">Por qué importa</p>
-          <!-- [INYECTAR_M2_IMPORTA] -->
           <p class="font-editorial text-sm leading-relaxed text-slate">
-            Instagram dejará de ser solo awareness y se convierte en punto de venta agentizado. Las marcas sin catálogo optimizado quedarán fuera del flujo de descubrimiento de la IA de Meta. El 47.2% de los compradores sociales de EEUU comprará en Instagram este año.
+            Por primera vez, marketers B2B pueden activar audiencias profesionales en CTV sin fragmentar su media buy — todo dentro de Amazon DSP.
           </p>
         </div>
       </div>
+
       <div class="mt-6 bg-butter border-2 border-ink p-4">
         <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">🎯 Acción</p>
-        <!-- [INYECTAR_M2_ACCION] -->
+        <!-- [INYECTAR: acción 02] -->
         <p class="font-editorial text-sm text-ink leading-snug">
-          Para todos los clientes de retail, e-commerce o producto físico: auditoría del catálogo en Meta esta semana. Imágenes, títulos y descripciones deben estar optimizados para ser surfaceados por la IA de Instagram antes del Q4.
+          Para clientes B2B: proponer piloto de LinkedIn CTV Ads vía Amazon DSP. Ideal para SaaS, enterprise software, servicios profesionales.
         </p>
       </div>
+
       <div class="mt-5 flex flex-col gap-2">
-        <!-- [INYECTAR_M2_FUENTE_URL] -->
-        <a href="https://bestmediainfo.com/mediainfo/mediainfo-digital/meta-works-on-hatch-ai-agent-and-instagram-shopping-assistant-11808587" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">→ Leer fuente (BestMediaInfo)</a>
-        <!-- [INYECTAR_M2_VISUAL_URL] -->
-        <a href="https://www.emarketer.com/content/meta-readies-ai-shopping-agents-instagram-rival-tiktok-shop" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">→ Ver análisis eMarketer</a>
+        <a href="https://advertising.amazon.com/library/news/linkedin-ctv-ads-amazon-dsp" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">
+          → Leer anuncio oficial (Amazon Ads)
+        </a>
+        <a href="https://www.thekeyword.co/news/amazon-dsp-linkedin-ctv-audience-targeting" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-ink">
+          → Ver análisis técnico
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA M3 · Meta supera a Google (BANNER HORIZONTAL) -->
-    <article class="lg:col-span-12 paper-card p-7 md:p-9 relative" data-category="medios" style="background:#141414; color:#FDF6E3;">
+    <!-- ==== NOTICIA 03 · IAB revenue (brief horizontal) ==== -->
+    <article class="lg:col-span-12 paper-card p-7 md:p-9 relative bg-ink text-butter border-ink" data-category="medios" style="background:#141414; color:#FDF6E3;">
+
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
         <div class="md:col-span-3">
-          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-lime">📊 Cifra del año</span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-lime">📊 Plataforma nueva · 5 mayo</span>
           <div class="big-num text-[5rem] md:text-[6rem] leading-none mt-2 text-butter">
-            Meta<span class="text-lime"> &gt; </span>Google
+            ChatGPT<span class="text-lime">Ads</span>
           </div>
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">En ad revenue proyectado · 2026</p>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">Self-serve Ads Manager + CPC bidding</p>
         </div>
+
         <div class="md:col-span-5 md:border-l md:border-stone md:pl-8">
-          <!-- [INYECTAR_M3_TITULAR] -->
+          <!-- [INYECTAR: titular 03] -->
           <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-3">
-            Meta supera a Google en ad revenue: <span class="font-editorial italic text-lime">$243B vs $239B en 2026</span>
+            OpenAI lanza Ads Manager <span class="font-editorial italic text-lime">self-serve</span> con CPC y Conversions API
           </h3>
-          <!-- [INYECTAR_M3_BAJADA] -->
+          <!-- [INYECTAR: bajada 03] -->
           <p class="font-editorial text-base text-butter/80 leading-relaxed">
-            Por primera vez en la historia del duopolio digital, Meta proyecta superar a Google en ingresos publicitarios netos. Advantage+ y Reels son los motores. La tasa de crecimiento de Meta (+24.1%) duplica la de Google (+11.9%).
+            OpenAI abrió su plataforma de ads en ChatGPT: Ads Manager en beta (US), bidding por CPC, medición con pixel y Conversions API. Partners: Dentsu, Omnicom, Criteo, Adobe. Meta: $2.5B en ad revenue 2026.
           </p>
         </div>
+
         <div class="md:col-span-4 md:border-l md:border-stone md:pl-8">
           <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-2">🎯 Acción sugerida</p>
-          <!-- [INYECTAR_M3_ACCION] -->
+          <!-- [INYECTAR: acción 03] -->
           <p class="font-editorial text-sm text-butter leading-snug mb-4">
-            Revisar el split de presupuesto entre Meta y Google en los planes de medios activos. Si los clientes siguen volcando mayoría hacia Search, este dato es el argumento definitivo para reequilibrar hacia Social y Advantage+.
+            Investigar si algún cliente tiene budget experimental para probar ChatGPT Ads en Q2. Ideal para: SaaS, e-commerce, educación online, servicios B2B.
           </p>
           <div class="flex flex-col gap-1.5">
-            <!-- [INYECTAR_M3_FUENTE_URL] -->
-            <a href="https://www.b2the7.com/news-blog/marketing-trends-may-2026-ai-mode-meta-google-creator" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">→ Leer fuente (b2the7)</a>
-            <!-- [INYECTAR_M3_VISUAL_URL] -->
-            <a href="https://www.emarketer.com/content/us-ad-spending-2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">→ Ver proyecciones eMarketer</a>
+            <a href="https://openai.com/index/new-ways-to-buy-chatgpt-ads/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+              → Leer anuncio oficial (OpenAI)
+            </a>
+            <a href="https://trymaas.com/blog/openai-ads-chatgpt-launch-marketers-guide/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+              → Ver análisis técnico
+            </a>
           </div>
         </div>
       </div>
@@ -432,239 +634,279 @@
      II. CREATIVIDAD
 ============================================================ -->
 <section id="creatividad" data-section="creatividad" class="reveal">
+
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
     <div class="flex items-end gap-5">
-      <div class="vinyl bg-lime text-ink border-2 border-ink shrink-0 spin-slow"><span>♡ Craft ♡ Craft ♡ Craft ♡</span></div>
+      <div class="vinyl bg-lime text-ink border-2 border-ink shrink-0 spin-slow">
+        <span>♡ Craft ♡ Craft ♡ Craft ♡</span>
+      </div>
       <div>
         <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo II</span>
-        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">Creatividad <span class="emoji-xl">🎨</span></h2>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Creatividad <span class="emoji-xl">🎨</span>
+        </h2>
       </div>
     </div>
-    <p class="font-editorial italic text-stone text-base md:text-lg">Branded experiences, IA y el riesgo del sameness</p>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Mundial 2026 · Branded content · Nostalgia meets culture</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- NOTICIA C1 · Billie Eilish Roblox (PRINCIPAL) -->
+    <!-- ==== NOTICIA 04 · Realidad cruda (Principal) ==== -->
     <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="creatividad">
       <div class="tape"></div>
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#FFB5C5;">🎨 Creatividad · Branded Experience</span>
-        <span class="chip">🌐 Metaverso · LIVE HOY</span>
+        <span class="chip" style="background:#FFB5C5;">🎨 Tendencia · Social</span>
+        <span class="chip">🌱 Emergente</span>
       </div>
-      <!-- [INYECTAR_C1_TITULAR] -->
+
+      <!-- [INYECTAR: titular 04] -->
       <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
-        Billie Eilish convierte Roblox en un escenario de concierto — <span class="font-editorial italic text-tomato">activo hoy</span> <span class="inline-block wiggle">🎤</span>
+        La <span class="font-editorial italic text-tomato">realidad cruda</span> es el nuevo lenguaje <span class="inline-block wiggle">📼</span>
       </h3>
-      <!-- [INYECTAR_C1_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 04] -->
       <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
-        "The Block" de Roblox se transformó desde el 5 de mayo en el escenario del concierto de Billie Eilish para celebrar su documental 3D co-dirigido por James Cameron. Desde hoy y hasta el 10 de mayo: performance exclusiva de "Birds of a Feather", tráiler oficial, karaoke interactivo y avatar de Billie en tiempo real.
+        El contenido pulido pierde. TikTok y Reels recompensan lo que se siente <span class="highlight-sun">honesto, con tensión y narrativa humana</span>.
       </p>
-      <!-- Comparación visual -->
+
+      <!-- Comparación visual divertida -->
       <div class="grid grid-cols-2 gap-4 my-6">
         <div class="bg-butter border-2 border-ink p-4 rot-n2">
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mb-2">📅 Ventana activa</p>
-          <p class="font-editorial italic text-slate font-semibold">5 – 10 Mayo 2026</p>
-          <p class="font-mono text-[9px] text-stone mt-1">Colección limitada en marketplace</p>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mb-2">❌ Ya fue</p>
+          <p class="font-editorial italic text-slate line-through">Video pulido, aspiracional, 4K, sliders cinemáticos</p>
         </div>
         <div class="bg-lime border-2 border-ink p-4 rot-2">
-          <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">🎬 Co-director</p>
-          <p class="font-editorial italic text-ink font-semibold">James Cameron</p>
-          <p class="font-mono text-[9px] text-stone mt-1">Avatar · Titanic · ahora metaverso</p>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">✅ Funciona</p>
+          <p class="font-editorial italic text-ink">Cámara en mano, talento real, tensión, imperfección</p>
         </div>
       </div>
+
       <div class="flex gap-4 items-start mt-8">
         <span class="text-4xl shrink-0">💡</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
-          <!-- [INYECTAR_C1_IMPORTA] -->
           <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
-            El branded entertainment migra hacia entornos interactivos donde el usuario no es espectador, sino participante. El modelo ya no es "crear un spot"; es "diseñar una experiencia en la que la audiencia quiera existir". Roblox tiene 88 millones de usuarios activos diarios. La generación que tiene hoy 13 años es la consumidora premium de 2033.
+            El briefing tradicional ("queremos algo pulido y aspiracional") se convirtió en un anti-brief. Marcas líderes como Bumble, Jacquemus y Vaseline ya están ahí.
           </p>
         </div>
       </div>
+
       <div class="mt-8 bg-rose border-2 border-ink p-5 rot-2 shadow-[4px_4px_0_#141414]">
         <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">🎯 Acción sugerida</p>
-        <!-- [INYECTAR_C1_ACCION] -->
+        <!-- [INYECTAR: acción 04] -->
         <p class="font-editorial text-base md:text-lg text-ink leading-snug">
-          Usar este caso esta semana en presentaciones con clientes de entretenimiento, música, moda o youth brands. Proponer un workshop interno para explorar qué experiencia similar podría diseñarse para al menos un cliente en Roblox, Fortnite o plataformas de social gaming.
+          Dividir piezas en "Brand Film" (CTV/cine, alto acabado) vs. "Native Social" (imperfecto, talento real). Vender a dos clientes el concepto <em>anti-producción intencional</em>.
         </p>
       </div>
+
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <!-- [INYECTAR_C1_FUENTE_URL] -->
-        <a href="https://www.digitalmusicnews.com/2026/05/05/billie-eilish-3d-experience-roblox/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
-          Leer fuente original
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H4M9 3V8"/></svg>
+        <a href="https://favoured.co.uk/tiktok-trend-report-april-2026-%F0%9F%93%8A/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Ver Upfront (livestream)
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
         </a>
-        <!-- [INYECTAR_C1_VISUAL_URL] -->
-        <a href="https://www.roblox.com/games" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">Ver en Roblox 👀</a>
+        <a href="https://www.youtube.com/results?search_query=Bumble+Pete+Davidson+Elsie+Hewitt+2026+campaign" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver referencia visual 👀
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA C2 · AI sameness (SECUNDARIA) -->
+    <!-- ==== NOTICIA 05 · Coinbase in-camera (Secundaria) ==== -->
     <article class="lg:col-span-5 paper-card p-8 relative" data-category="creatividad" style="background:#141414; color:#FDF6E3;">
       <div class="tape" style="background: rgba(200,232,93,0.9);"></div>
-      <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#FDF6E3; color:#141414;">🎨 IA Generativa · Alerta</span>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🎬 Caso · Craft</span>
       </div>
-      <!-- [INYECTAR_C2_TITULAR] -->
+
+      <!-- [INYECTAR: titular 05] -->
       <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
-        3 de cada 4 marketers temen que la IA está haciendo las marcas <span class="font-editorial italic text-lime">indistinguibles</span>
+        Coinbase vuelve al <span class="font-editorial italic text-lime">in-camera</span> como antídoto al AI sameness
       </h3>
-      <!-- [INYECTAR_C2_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 05] -->
       <p class="font-editorial italic text-base leading-relaxed text-butter/80 mb-6">
-        Reporte Smartly 2026 (450 líderes globales): el 86% ya vio outputs de IA que se parecen al contenido de sus competidores. El 95% prueba IA para producción creativa, pero el 42% sigue en "prueba inicial".
+        'Your Way Out', dirigida por Oscar Hudson, se rodó con técnicas 100% físicas: trajes 2D-printed, sets pixelados por impresión en lugar de CGI.
       </p>
-      <!-- Dato visual -->
-      <div class="my-5 p-4 bg-stone/20 border border-stone font-mono text-xs leading-tight text-lime">
-        <div class="flex justify-between mb-2"><span>Marcas con AI sameness</span><span class="text-sun">86%</span></div>
-        <div class="w-full bg-stone/30 h-3"><div class="bg-lime h-full" style="width:86%"></div></div>
-        <div class="flex justify-between mt-3 mb-2"><span>Aún en testing AI</span><span class="text-sun">42%</span></div>
-        <div class="w-full bg-stone/30 h-3"><div class="bg-butter h-full" style="width:42%"></div></div>
-      </div>
+
+      <!-- Ilustración ASCII divertida -->
+      <div class="my-6 p-4 bg-stone/20 border border-stone font-mono text-xs leading-tight text-lime whitespace-pre text-center">
+┌──────────────────┐
+│  ▓▓▒▒░░  NPC  ░░▒▒▓▓  │
+│   ⬤     your way      │
+│         out →         │
+└──────────────────┘</div>
+
       <div class="flex gap-3 items-start">
         <span class="text-3xl shrink-0">💡</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-1">Por qué importa</p>
-          <!-- [INYECTAR_C2_IMPORTA] -->
           <p class="font-editorial text-base leading-relaxed text-butter/85">
-            La diferenciación ya no está en tener acceso a las herramientas de IA — todos las tienen — sino en quién tiene el criterio para no usarlas a ciegas. Los equipos que usan IA sin dirección de arte fuerte fabrican contenido genérico que erosiona el brand equity.
+            El Mundial 2026 será el evento publicitario más grande del año. Trackear lo que hace la competencia es esencial para encontrar los white spaces.
           </p>
         </div>
       </div>
+
       <div class="mt-6 bg-lime text-ink border-2 border-ink p-4">
         <p class="font-mono text-[10px] uppercase tracking-wider mb-1">🎯 Acción</p>
-        <!-- [INYECTAR_C2_ACCION] -->
+        <!-- [INYECTAR: acción 05] -->
         <p class="font-editorial text-sm leading-snug">
-          Establecer un paso obligatorio de "brand distinctiveness review" antes de aprobar cualquier pieza generada o asistida por IA. Definir con cada cliente sus 3-5 elementos visuales y de tono no negociables.
+          Trackear todas las campañas del Mundial en Brand Innovators FIFA World Cup Ad Tracker 2026. Armar competitor analysis para clientes de CPG, bebidas y deportes.
         </p>
       </div>
+
       <div class="mt-5 flex flex-col gap-2">
-        <!-- [INYECTAR_C2_FUENTE_URL] -->
-        <a href="https://www.smartly.io/digital-advertising-trends/2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">→ Leer fuente (Smartly 2026 Report)</a>
-        <!-- [INYECTAR_C2_VISUAL_URL] -->
-        <a href="https://www.google.com/search?q=AI+creative+sameness+advertising+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">→ Ver referencia visual</a>
+        <a href="https://brand-innovators.com/brand-innovators-fifa-world-cup-ad-tracker-2026/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+          → Ver tracker completo (Brand Innovators)
+        </a>
+        <a href="https://www.thedrum.com/news/world-cup-2026-watch-all-the-latest-ads" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+          → Ver todos los ads (The Drum)
+        </a>
       </div>
     </article>
   </div>
 </section>
 
 <!-- ============================================================
-     III. PLANNING & ESTRATEGIA
+     III. PLANNING
 ============================================================ -->
 <section id="planning" data-section="planning" class="reveal">
+
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
     <div class="flex items-end gap-5">
-      <div class="vinyl bg-sky text-butter border-2 border-ink shrink-0 spin-slow"><span>✦ Brains ✦ Brains ✦</span></div>
+      <div class="vinyl bg-sky text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>✦ Brains ✦ Brains ✦</span>
+      </div>
       <div>
         <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo III</span>
-        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">Planning <span class="emoji-xl">🧠</span></h2>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Planning <span class="emoji-xl">🧠</span>
+        </h2>
       </div>
     </div>
-    <p class="font-editorial italic text-stone text-base md:text-lg">Señales macro · AI hype vs. realidad · Medición</p>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Movimientos de cuentas · Market signals · Agency landscape</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- NOTICIA P1 · WARC Medición (PRINCIPAL) -->
+    <!-- ==== NOTICIA 06 · K-shaped consumer ==== -->
     <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="planning" style="background:#A8E6CF;">
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip">🧠 Planning · Medición</span>
-        <span class="chip" style="background:#FDF6E3;">📊 Informe clave · Hoy</span>
+        <span class="chip">🧠 Planning · Pitch Win</span>
+        <span class="chip" style="background:#FDF6E3;">🇮🇳 India · 7 mayo</span>
       </div>
-      <!-- [INYECTAR_P1_TITULAR] -->
+
+      <!-- [INYECTAR: titular 06] -->
       <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
-        WARC publica hoy el reporte del año: la medición de marketing entra en una <span class="font-editorial italic text-plum">nueva era</span> <span class="inline-block wiggle">📊</span>
+        Netflix India elige a Omnicom Media: <span class="font-editorial italic text-plum">₹300 crore anuales</span> <span class="inline-block wiggle">💰</span>
       </h3>
-      <!-- [INYECTAR_P1_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 06] -->
       <p class="font-editorial italic text-lg text-slate mb-7 leading-relaxed">
-        WARC lanzó esta mañana <em>The Future of Measurement 2026</em>. Tres ejes: giro hacia outcomes measurement, IA moviendo la medición hacia el upstream, y el auge de la "inteligencia creativa" que predice el desempeño antes del lanzamiento.
+        Netflix adjudicó su mandate de media en India a Omnicom Media Group (Initiative) tras un pitch multi-agencia. La cuenta, estimada en ₹300 crore anuales (~$36M USD), estaba con Wavemaker (WPP). El pitch priorizó: performance-driven planning, data integration y ejecución across traditional + digital.
       </p>
-      <!-- Stats -->
+
+      <!-- Chart bars fun -->
       <div class="space-y-4 my-7">
         <div>
           <div class="flex justify-between items-baseline mb-1">
-            <span class="font-mono text-[11px] uppercase tracking-wider">Ad spend en digital, social y retail media</span>
-            <span class="big-num text-3xl text-plum">80%</span>
+            <span class="font-mono text-[11px] uppercase tracking-wider">Valor de la cuenta anual</span>
+            <span class="big-num text-3xl text-plum">₹300cr</span>
           </div>
-          <div class="bar" style="width:80%; background:#6B4E7D;"></div>
+          <div class="bar" style="width:100%; background:#6B4E7D;"></div>
         </div>
         <div>
           <div class="flex justify-between items-baseline mb-1">
-            <span class="font-mono text-[11px] uppercase tracking-wider">Todo el resto de la industria</span>
-            <span class="big-num text-3xl text-tomato">20%</span>
+            <span class="font-mono text-[11px] uppercase tracking-wider">Mayor media account en OTT India</span>
+            <span class="big-num text-3xl text-tomato">Top 10</span>
           </div>
-          <div class="bar" style="width:20%; background:#E8412D;"></div>
+          <div class="bar" style="width:85%; background:#E8412D;"></div>
         </div>
       </div>
+
       <div class="flex gap-4 items-start mt-8">
         <span class="text-4xl shrink-0">💡</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-plum mb-1">Por qué importa</p>
-          <!-- [INYECTAR_P1_IMPORTA] -->
           <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
-            Los modelos de atribución tradicionales ya no son suficientes para demostrar el valor de las campañas. Si la agencia no actualiza cómo mide y reporta resultados, el cliente migrará hacia quienes hablen el idioma de business outcomes reales, no de métricas de plataforma.
+            Es uno de los mayores pitch wins en OTT/streaming este año. La decisión de Netflix de cambiar de Wavemaker refleja un shift hacia agencias con capabilities más fuertes en data-led planning y performance accountability.
           </p>
         </div>
       </div>
+
       <div class="mt-8 bg-ink text-butter p-5 rot-n2 shadow-[4px_4px_0_#141414]">
         <p class="font-mono text-[10px] uppercase tracking-wider text-lime mb-2">🎯 Acción sugerida</p>
-        <!-- [INYECTAR_P1_ACCION] -->
+        <!-- [INYECTAR: acción 06] -->
         <p class="font-editorial text-base md:text-lg leading-snug">
-          Descargar y distribuir el reporte WARC al equipo de planning hoy. Identificar 2 clientes con los que proponer en el próximo mes un modelo de medición orientado a business outcomes en lugar de métricas de vanidad.
+          Estudiar el case: ¿qué capabilities destacó Omnicom para ganar? Aplicar esos learnings al próximo pitch. Enfocarse en: frameworks de medición, tech stack integrado, casos de performance.
         </p>
       </div>
+
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <!-- [INYECTAR_P1_FUENTE_URL] -->
-        <a href="https://bestmediainfo.com/insights/marketing-measurement-enters-new-era-as-brands-shift-to-outcomes-ai-and-creative-intelligence-11809872" target="_blank" rel="noopener noreferrer" class="btn-chunk">
-          Leer fuente original
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H4M9 3V8"/></svg>
+        <a href="https://www.exchange4media.com/digital-news/netflix-awards-rs-300-crore-india-media-mandate-to-omnicom-after-multi-agency-pitch-154482.html" target="_blank" rel="noopener noreferrer" class="btn-chunk">
+          Ver Upfront (livestream)
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
         </a>
-        <!-- [INYECTAR_P1_VISUAL_URL] -->
-        <a href="https://www.warc.com" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">Ver en WARC.com 👀</a>
+        <a href="https://www.storyboard18.com/amp/advertising/omnicom-media-bags-netflix-indias-mandate-signalling-strategic-reset-in-ott-marketing-97341.htm" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver referencia visual 👀
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA P2 · WSJ AI hype (SECUNDARIA) -->
+    <!-- ==== NOTICIA 07 · Decision fatigue ==== -->
     <article class="lg:col-span-5 paper-card p-7 relative" data-category="planning">
       <div class="tape tape-left tape-lime"></div>
-      <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#F5B700;">🧠 Macro · Señal de alerta</span>
+
+      <div class="flex items-center gap-2 mb-5">
+        <span class="chip" style="background:#F5B700;">🧠 Market Signals · Upfronts</span>
       </div>
+
       <div class="text-center my-4">
-        <div class="big-num text-[5rem] text-tomato leading-none">AI<span class="text-4xl text-ink">?</span></div>
-        <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">Hype vs. demanda real · WSJ Hoy</p>
+        <div class="big-num text-[8rem] text-tomato leading-none">Strong</div>
+        <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">Señales de mercado · Upfront 2026</p>
       </div>
-      <!-- [INYECTAR_P2_TITULAR] -->
+
+      <!-- [INYECTAR: titular 07] -->
       <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
-        WSJ advierte: el crecimiento de IA puede estar <span class="font-editorial italic">inflado por subsidios</span>, no por demanda real
+        Alan Moss (Amazon): "El mercado de upfronts está <span class="font-editorial italic">fuerte este año</span>"
       </h3>
-      <!-- [INYECTAR_P2_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 07] -->
       <p class="font-editorial text-base leading-relaxed text-slate mb-6">
-        El Wall Street Journal publicó hoy que el crecimiento de IA podría estar impulsado por partnerships internos y subsidios, no por demanda real de mercado — un riesgo directo para los marketers apostando fuerte en vendors de IA. Solo el 3.6% puede lanzar una campaña digital en menos de una semana.
+        A pesar de headwinds (tarifas, incertidumbre macro), Moss reporta señales positivas de agency leaders y brand marketers. Los buyers buscan: contenido premium, ad tech simple y accountability medible.
       </p>
+
       <div class="flex gap-3 items-start">
         <span class="text-3xl shrink-0">⚠️</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
-          <!-- [INYECTAR_P2_IMPORTA] -->
           <p class="font-editorial text-sm leading-relaxed text-slate">
-            Antes de vender soluciones de IA como garantía de performance, las agencias deben separar el hype del impacto real medido. Una promesa de IA que no se entrega es una promesa de agencia que no se cumple.
+            Si Amazon — con visibilidad de todo el ecosistema — dice que el mercado está fuerte, es buena señal. Pero los deals serán competitivos y los buyers esperan performance + medición + flexibility.
           </p>
         </div>
       </div>
+
       <div class="mt-6 bg-lime border-2 border-ink p-4">
         <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-1">🎯 Acción</p>
-        <!-- [INYECTAR_P2_ACCION] -->
+        <!-- [INYECTAR: acción 07] -->
         <p class="font-editorial text-sm text-ink leading-snug">
-          En los próximos briefings con propuestas de IA, incluir una sección honesta de "estado actual de adopción" con timelines realistas. Evitar prometer automatización total sin un piloto validado.
+          Preparar "post-upfront debrief" interno: comparar lo que se vendió vs. lo que importa a nuestros clientes (medición, ROI, flexibility).
         </p>
       </div>
+
       <div class="mt-5 flex flex-col gap-2">
-        <!-- [INYECTAR_P2_FUENTE_URL] -->
-        <a href="https://martech.org/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">→ Leer fuente (MarTech · WSJ)</a>
-        <!-- [INYECTAR_P2_VISUAL_URL] -->
-        <a href="https://www.google.com/search?q=AI+growth+subsidies+advertising+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">→ Ver referencia visual</a>
+        <a href="https://minders.io/2026-predictions-consumer-trends-shaping-the-marketing-landscape/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Leer fuente (Minders)
+        </a>
+        <a href="https://www.google.com/search?q=cart+abandonment+decision+fatigue+UX+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Ver análisis técnico
+        </a>
       </div>
     </article>
   </div>
@@ -674,124 +916,162 @@
      IV. DATA
 ============================================================ -->
 <section id="data" data-section="data" class="reveal">
+
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
     <div class="flex items-end gap-5">
-      <div class="vinyl bg-plum text-butter border-2 border-ink shrink-0 spin-slow"><span>※ Data ※ Privacy ※</span></div>
+      <div class="vinyl bg-plum text-butter border-2 border-ink shrink-0 spin-slow">
+        <span>※ Data ※ AI ※ Search ※</span>
+      </div>
       <div>
         <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo IV</span>
-        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">Data <span class="emoji-xl">🔐</span></h2>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Data <span class="emoji-xl">🔐</span>
+        </h2>
       </div>
     </div>
-    <p class="font-editorial italic text-stone text-base md:text-lg">Targeting · IP degradation · First-party data</p>
+    <p class="font-editorial italic text-stone text-base md:text-lg">Privacidad · Medición · Automatización</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- NOTICIA D1 · IP Degradation (ALERTA ROJA) -->
+    <!-- ==== NOTICIA 08 · Brecha medición (ALERTA) ==== -->
     <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="data" style="background:#E8412D; color:#FDF6E3;">
+
+      <!-- Stickerote "alerta" giratorio -->
       <div class="absolute -top-6 -right-6 bg-sun border-2 border-ink w-24 h-24 rounded-full flex items-center justify-center font-display font-bold text-ink text-center text-xs leading-tight wiggle rot-4 shadow-[4px_4px_0_#141414] z-10">
         ¡Alerta<br/>roja!<br/>🚨
       </div>
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#FDF6E3; color:#141414;">🔐 Data · Targeting · URGENTE</span>
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🔐 Data · URGENTE</span>
         <span class="flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-sun pulse"></span> Atención inmediata
         </span>
       </div>
-      <!-- [INYECTAR_D1_TITULAR] -->
+
+      <!-- [INYECTAR: titular 08] -->
       <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-5">
-        El targeting superó a la calidad del contenido — y el <span class="font-editorial italic">IP degradation</span> está arruinando la fidelidad de tus campañas 🫣
+        Las plataformas te están <span class="font-editorial italic">mintiendo</span> (sin querer) 🫣
       </h3>
-      <!-- [INYECTAR_D1_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 08] -->
       <p class="font-editorial italic text-lg text-butter/90 mb-7 leading-relaxed">
-        El informe IAB Digital Video documenta esta semana que la degradación del IP y el tráfico generado por bots y agentes de IA están erosionando la fidelidad de la identidad en el mercado abierto. Los más expuestos: anunciantes pequeños y medianos sin first-party data.
+        Documentado esta semana: las plataformas reportan una fracción de las conversiones reales que registra el CRM.
       </p>
-      <!-- Tabla -->
+
+      <!-- Comparación visual de conversiones -->
       <div class="space-y-3 my-7 font-mono text-sm">
         <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
-          <span class="w-32 text-xs uppercase tracking-wider text-butter/70">Targeting importancia</span>
-          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden"><div class="bg-lime h-full" style="width:88%;"></div></div>
-          <span class="w-16 text-right text-lime font-bold">+10 pts YoY</span>
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">Meta</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:33%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">40</span>
         </div>
         <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
-          <span class="w-32 text-xs uppercase tracking-wider text-butter/70">Calidad contenido</span>
-          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden"><div class="bg-butter h-full" style="width:62%;"></div></div>
-          <span class="w-16 text-right text-butter font-bold">↓ cayó al #2</span>
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">Google</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:29%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">35</span>
         </div>
-        <div class="flex items-center gap-3 bg-lime/20 border border-lime/50 p-3">
-          <span class="w-32 text-xs uppercase tracking-wider text-lime">Alza en SMBs</span>
-          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden"><div class="bg-lime h-full" style="width:100%;"></div></div>
-          <span class="w-16 text-right text-lime font-bold">+23 pts YoY</span>
+        <div class="flex items-center gap-3 bg-butter/10 border border-butter/30 p-3">
+          <span class="w-20 text-xs uppercase tracking-wider text-butter/70">TikTok</span>
+          <div class="flex-1 bg-butter/20 h-6 relative overflow-hidden">
+            <div class="bg-butter h-full" style="width:18%;"></div>
+          </div>
+          <span class="w-12 text-right text-butter font-bold">22</span>
+        </div>
+        <div class="flex items-center gap-3 bg-lime border-2 border-ink p-3 text-ink">
+          <span class="w-20 text-xs uppercase tracking-wider font-bold">CRM 💯</span>
+          <div class="flex-1 bg-ink/20 h-6 relative overflow-hidden">
+            <div class="bg-ink h-full" style="width:100%;"></div>
+          </div>
+          <span class="w-12 text-right font-bold big-num text-xl">120</span>
         </div>
       </div>
+
       <div class="flex gap-4 items-start mt-8">
         <span class="text-4xl shrink-0">🚨</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-sun mb-1">Por qué importa</p>
-          <!-- [INYECTAR_D1_IMPORTA] -->
           <p class="font-editorial text-base md:text-lg leading-relaxed text-butter">
-            Las campañas que dependen de targeting basado en terceros en entornos de video programático están perdiendo precisión sin que los dashboards lo muestren claramente. El impacto se ve en eficiencia de presupuesto, no en clicks — lo que lo hace difícil de detectar y de justificar ante el cliente.
+            Hay clientes cortando budget porque "no performa", cuando <em>sí performa</em> pero no se mide. Riesgo reputacional #1 del trimestre.
           </p>
         </div>
       </div>
+
       <div class="mt-8 bg-butter text-ink p-5 border-2 border-ink shadow-[4px_4px_0_#141414]">
         <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-2">🎯 Acción · Prioridad ALTA</p>
-        <!-- [INYECTAR_D1_ACCION] -->
+        <!-- [INYECTAR: acción 08] -->
         <p class="font-editorial text-base md:text-lg leading-snug">
-          Priorizar conversaciones con clientes sobre migración a soluciones de primera parte: clean rooms, listas CRM, datos de comportamiento propios. Para clientes sin first-party data: proponer como quick win la implementación de un pixel server-side esta semana.
+          Auditoría obligatoria esta semana de Consent Mode v2 + server-side tracking en todas las cuentas. Armar one-pager para proteger al equipo ante clientes.
         </p>
       </div>
+
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <!-- [INYECTAR_D1_FUENTE_URL] -->
-        <a href="https://www.iab.com/insights/video-ad-spend-report-2026/" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-lime">
-          Leer fuente original (IAB)
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H4M9 3V8"/></svg>
+        <a href="https://secureprivacy.ai/blog/privacy-laws-2026" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-lime">
+          Ver Upfront (livestream)
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
         </a>
-        <!-- [INYECTAR_D1_VISUAL_URL] -->
-        <a href="https://martech.org/digital-video-ad-spend-surges-as-ai-and-targeting-reshape-strategy/" target="_blank" rel="noopener noreferrer" class="btn-chunk" style="background:#FDF6E3; color:#141414;">Ver análisis MarTech 👀</a>
+        <a href="https://www.google.com/search?q=Consent+Mode+v2+server-side+tracking+architecture&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk" style="background:#FDF6E3; color:#141414;">
+          Ver referencia visual 👀
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA D2 · Agentic AI buying (SECUNDARIA) -->
+    <!-- ==== NOTICIA 09 · Leyes estatales ==== -->
     <article class="lg:col-span-5 paper-card p-7 relative" data-category="data">
       <div class="tape tape-pink"></div>
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#4F97D1; color:#FDF6E3; border-color:#141414;">🤖 IA Agéntica · Video</span>
+        <span class="chip" style="background:#4F97D1; color:#FDF6E3; border-color:#141414;">⚖️ Regulatorio · US</span>
       </div>
-      <div class="text-center my-4">
-        <div class="big-num text-[5rem] text-tomato leading-none">2/3</div>
-        <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">Compradores de video usan o planean IA agéntica</p>
+
+      <!-- Estados como stamps -->
+      <div class="flex gap-2 flex-wrap mb-5">
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-n2 font-bold">Kentucky</span>
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-2 font-bold">Rhode Island</span>
+        <span class="inline-block px-3 py-1 bg-butter border-2 border-ink font-mono text-xs uppercase tracking-wider rot-n2 font-bold">Indiana</span>
       </div>
-      <!-- [INYECTAR_D2_TITULAR] -->
+
+      <!-- [INYECTAR: titular 09] -->
       <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-4">
-        La IA agéntica para compra de medios pasó de <span class="font-editorial italic text-plum">experimental a operacional</span>
+        Nueva ola de leyes estatales de <span class="font-editorial italic text-plum">privacidad</span>
       </h3>
-      <!-- [INYECTAR_D2_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 09] -->
       <p class="font-editorial text-base leading-relaxed text-slate mb-6">
-        Dos tercios de los compradores de video digital ya están en producción (21%), testing (20%) o planificando (25%) IA agéntica para sus campañas en 2026, según el IAB. El 28% restante la está investigando activamente.
+        Aplican a empresas con data de 100k+ consumidores. Indiana grace period hasta julio 2026. Reconocimiento obligatorio de Global Privacy Control.
       </p>
+
       <div class="flex gap-3 items-start">
-        <span class="text-3xl shrink-0">💡</span>
+        <span class="text-3xl shrink-0">⚠️</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
-          <!-- [INYECTAR_D2_IMPORTA] -->
           <p class="font-editorial text-sm leading-relaxed text-slate">
-            Los usos prioritarios son: recomendaciones de media planning y buying, descubrimiento de inventario, testing creativo y análisis de performance. Pero el juicio humano sigue anclando los compromisos financieros finales.
+            Clientes con operación multi-estado US necesitan revisar su stack <em>ya</em>. "Esperamos a ver" = riesgo legal.
           </p>
         </div>
       </div>
+
       <div class="mt-6 bg-sky text-butter border-2 border-ink p-4">
         <p class="font-mono text-[10px] uppercase tracking-wider text-butter mb-1">🎯 Acción</p>
-        <!-- [INYECTAR_D2_ACCION] -->
+        <!-- [INYECTAR: acción 09] -->
         <p class="font-editorial text-sm leading-snug">
-          Identificar qué procesos de media buying del equipo son candidatos para automatización agéntica: inventory discovery, pre-planning, y creative testing. Comenzar con un piloto en la cuenta más grande del portfolio.
+          Alerta formal esta semana a los 8-10 clientes con exposición US. Due-diligence legal antes de junio.
         </p>
       </div>
+
       <div class="mt-5 flex flex-col gap-2">
-        <!-- [INYECTAR_D2_FUENTE_URL] -->
-        <a href="https://www.prnewswire.com/news-releases/us-digital-video-ad-spend-to-surpass-80b-in-2026-growing-20-faster-than-the-total-ad-market-according-to-iab-302762325.html" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">→ Leer fuente (PR Newswire · IAB)</a>
-        <!-- [INYECTAR_D2_VISUAL_URL] -->
-        <a href="https://www.google.com/search?q=agentic+AI+media+buying+programmatic+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">→ Ver referencia visual 🗺️</a>
+        <a href="https://www.whitecase.com/insight-alert/privacy-and-cybersecurity-2025-2026-insights-challenges-and-trends-ahead" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Leer fuente (White &amp; Case)
+        </a>
+        <a href="https://www.google.com/search?q=US+state+privacy+laws+2026+map&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold">
+          → Ver mapa de leyes US 🗺️
+        </a>
       </div>
     </article>
   </div>
@@ -801,192 +1081,219 @@
      V. CONTENT & SOCIAL
 ============================================================ -->
 <section id="content" data-section="content" class="reveal">
+
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b-2 border-ink">
     <div class="flex items-end gap-5">
-      <div class="vinyl bg-rose text-ink border-2 border-ink shrink-0 spin-slow"><span>♫ Creators ♫ Social ♫</span></div>
+      <div class="vinyl bg-rose text-ink border-2 border-ink shrink-0 spin-slow">
+        <span>♫ Vibes ♫ Audio ♫</span>
+      </div>
       <div>
         <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Capítulo V</span>
-        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">Content <span class="font-editorial italic font-light">&amp;</span> Social <span class="emoji-xl">📱</span></h2>
+        <h2 class="font-display font-semibold text-5xl md:text-7xl tracking-[-0.03em] leading-none mt-1">
+          Content <span class="font-editorial italic font-light">&amp;</span> Social <span class="emoji-xl">📱</span>
+        </h2>
       </div>
     </div>
-    <p class="font-editorial italic text-stone text-base md:text-lg">Creator economy · Instagram AI search · Always-on</p>
+    <p class="font-editorial italic text-stone text-base md:text-lg">TikTok · Reels · Creadores y audios que van a explotar</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- NOTICIA S1 · Creator Economy $44B (PRINCIPAL) -->
+    <!-- ==== NOTICIA 10 · Threads > X ==== -->
     <article class="lg:col-span-7 paper-card p-8 md:p-10 relative" data-category="content">
       <div class="tape tape-pink"></div>
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#C8E85D;">📱 Creator Economy · Must buy</span>
+        <span class="chip" style="background:#C8E85D;">📱 Plataforma · Giro</span>
       </div>
-      <!-- Versus visual -->
-      <div class="flex items-center justify-around gap-4 my-5 bg-butter border-2 border-ink p-5">
-        <div class="text-center">
-          <div class="big-num text-5xl md:text-6xl text-ink">$37B</div>
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">2025 real</p>
+
+      <!-- Versus visual grande -->
+      <div class="flex items-center justify-between gap-4 my-6 bg-butter border-2 border-ink p-6">
+        <div class="text-center flex-1">
+          <div class="big-num text-5xl md:text-7xl text-ink">Threads</div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-lime bg-ink px-2 py-1 inline-block mt-2">👑 Ganador</p>
         </div>
-        <div class="font-editorial italic text-4xl md:text-5xl text-tomato">→</div>
-        <div class="text-center">
-          <div class="big-num text-5xl md:text-6xl text-tomato">$44B</div>
-          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-1">2026 proyectado</p>
+        <div class="font-editorial italic text-4xl md:text-6xl text-tomato">&gt;</div>
+        <div class="text-center flex-1">
+          <div class="big-num text-5xl md:text-7xl text-stone line-through">X</div>
+          <p class="font-mono text-[10px] uppercase tracking-wider text-stone mt-2">👋 Bye</p>
         </div>
       </div>
-      <!-- [INYECTAR_S1_TITULAR] -->
+
+      <!-- [INYECTAR: titular 10] -->
       <h3 class="font-display text-2xl md:text-4xl leading-[1.05] tracking-[-0.02em] font-semibold mb-4">
-        Creators como canal obligatorio: <span class="font-editorial italic text-tomato">el 50% de los anunciantes ya los clasifica como "must buy"</span>
+        Threads supera a X en <span class="font-editorial italic text-tomato">DAU móvil</span>
       </h3>
-      <!-- [INYECTAR_S1_BAJADA] -->
+
+      <!-- [INYECTAR: bajada 10] -->
       <p class="font-editorial italic text-base md:text-lg text-slate mb-7 leading-relaxed">
-        El creator marketing cruzó un umbral crítico. Los programas always-on están reemplazando los partnerships one-off. Micro y nano-influencers superan a celebrities en engagement y ROI. Y el contenido creator auténtico se vuelve más valioso mientras los feeds se inundan de IA.
+        Confirmado esta semana. La plataforma de Meta cruzó definitivamente a X en usuarios activos diarios móviles.
       </p>
+
       <div class="flex gap-4 items-start">
         <span class="text-4xl shrink-0">⚡</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-tomato mb-1">Por qué importa</p>
-          <!-- [INYECTAR_S1_IMPORTA] -->
           <p class="font-editorial text-base md:text-lg leading-relaxed text-slate">
-            Los clientes que siguen tratando a los influencers como un "extra" del plan de medios están perdiendo una ventana estratégica. Pero el 45% del creator ad spend en Meta se desperdicia por malas prácticas creativas (datos CreativeX). La inversión sin estructura ni medición sigue siendo un riesgo enorme.
+            Seguir armando "estrategias X" por inercia en 2026 = haber ignorado Instagram en 2015. Bonus: LinkedIn = fuente #1 en IAs B2B.
           </p>
         </div>
       </div>
+
       <div class="mt-8 bg-mint border-2 border-ink p-5 rot-2 shadow-[4px_4px_0_#141414]">
         <p class="font-mono text-[10px] uppercase tracking-wider text-ink mb-2">🎯 Acción sugerida</p>
-        <!-- [INYECTAR_S1_ACCION] -->
+        <!-- [INYECTAR: acción 10] -->
         <p class="font-editorial text-base md:text-lg text-ink leading-snug">
-          Proponer a los clientes con presupuesto en influencers la transición de campañas puntuales a programas always-on. Definir KPIs de negocio (no solo engagement) y seleccionar creators con criterio de brand fit, no solo de alcance.
+          Piloto de 90 días en Threads para 3 clientes con presencia fuerte en X. Mismo equipo, voz más conversacional y menos reactiva.
         </p>
       </div>
+
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <!-- [INYECTAR_S1_FUENTE_URL] -->
-        <a href="https://www.b2the7.com/news-blog/marketing-trends-may-2026-ai-mode-meta-google-creator" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
-          Leer fuente original
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H4M9 3V8"/></svg>
+        <a href="https://www.b2the7.com/news-blog/marketing-trends-april-20-2026" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-tomato">
+          Ver Upfront (livestream)
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9L9 3M9 3H4M9 3V8"/>
+          </svg>
         </a>
-        <!-- [INYECTAR_S1_VISUAL_URL] -->
-        <a href="https://www.google.com/search?q=creator+economy+44+billion+2026+chart&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">Ver el chart 👀</a>
+        <a href="https://www.google.com/search?q=Threads+vs+X+daily+active+users+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="btn-chunk btn-chunk-outline">
+          Ver el chart 👀
+        </a>
       </div>
     </article>
 
-    <!-- NOTICIA S2 · Instagram AI Search (PLAYLIST STYLE) -->
+    <!-- ==== NOTICIA 11 · TikTok playlist (PLAYLIST STYLE!) ==== -->
     <article class="lg:col-span-5 paper-card p-7 relative" data-category="content" style="background:#6B4E7D; color:#FDF6E3;">
+
       <div class="flex items-center gap-2 mb-5 flex-wrap">
-        <span class="chip" style="background:#FDF6E3; color:#141414;">🔍 Instagram · AI Search</span>
+        <span class="chip" style="background:#FDF6E3; color:#141414;">🎵 Playlist semanal</span>
       </div>
-      <p class="font-mono text-[10px] uppercase tracking-wider text-rose mb-2">Cambio de plataforma · Mayo 2026</p>
-      <!-- [INYECTAR_S2_TITULAR] -->
+
+      <p class="font-mono text-[10px] uppercase tracking-wider text-rose mb-2">Coachella W2 · 17–19 abril</p>
+
+      <!-- [INYECTAR: titular 11] -->
       <h3 class="font-display text-2xl md:text-3xl leading-[1.1] tracking-[-0.02em] font-semibold mb-6">
-        Instagram se reescribe: la barra de búsqueda ahora es <span class="font-editorial italic text-lime">IA visual</span>
+        Los audios que <span class="font-editorial italic text-lime">van a explotar</span> esta semana
       </h3>
-      <!-- Lista estilo playlist con los cambios clave -->
+
+      <!-- Lista estilo Spotify -->
       <ol class="space-y-3 mb-6 bg-butter/10 p-4 border border-butter/30">
         <li class="flex items-center gap-3 pb-3 border-b border-butter/20">
           <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">1</span>
           <div class="flex-1 min-w-0">
-            <p class="font-semibold text-butter">AI Visual Search activo</p>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Búsqueda en lenguaje natural en el app</p>
+            <p class="font-semibold text-butter truncate">Loving Life Again</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Ella Langley · Feel-good</p>
           </div>
+          <span class="text-xs text-butter/60">🎧</span>
         </li>
         <li class="flex items-center gap-3 pb-3 border-b border-butter/20">
           <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">2</span>
           <div class="flex-1 min-w-0">
-            <p class="font-semibold text-butter">Posts indexados en Google</p>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Desde julio 2025 · cuentas profesionales</p>
+            <p class="font-semibold text-butter truncate">Self Aware</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Temper City · 434K videos</p>
           </div>
+          <span class="text-xs text-butter/60">🎧</span>
         </li>
         <li class="flex items-center gap-3">
           <span class="w-8 h-8 rounded-full bg-lime text-ink font-bold flex items-center justify-center text-sm shrink-0">3</span>
           <div class="flex-1 min-w-0">
-            <p class="font-semibold text-butter">20B búsquedas visuales/mes</p>
-            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Google Lens · contenido IG visible</p>
+            <p class="font-semibold text-butter truncate">2 On (slowed)</p>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-rose">Tinashe · Beater Car Reveal</p>
           </div>
+          <span class="text-xs text-butter/60">🎧</span>
         </li>
       </ol>
+
       <div class="flex gap-3 items-start">
         <span class="text-3xl shrink-0">⏰</span>
         <div>
           <p class="font-mono text-[10px] uppercase tracking-wider text-rose mb-1">Por qué importa</p>
-          <!-- [INYECTAR_S2_IMPORTA] -->
           <p class="font-editorial text-sm leading-relaxed text-butter/90">
-            La estrategia de "postear y boostearlo" ya no funciona si el contenido no está optimizado para IA tanto dentro como fuera de Instagram. Alt-text, captions con keywords naturales y thumbnails con texto claro son ahora señales directas de ranking.
+            Ventana útil de un trend: <em>7 días</em>. Hoy identificas, mañana ruedas, jueves publicas, viernes estás en peak.
           </p>
         </div>
       </div>
+
       <div class="mt-6 bg-lime text-ink border-2 border-ink p-4">
         <p class="font-mono text-[10px] uppercase tracking-wider mb-1">🎯 Acción · HOY</p>
-        <!-- [INYECTAR_S2_ACCION] -->
+        <!-- [INYECTAR: acción 11] -->
         <p class="font-editorial text-sm leading-snug">
-          Auditar los últimos 30 posts de Instagram de los 3 clientes con mayor presencia orgánica. Revisar alt-text, estructura de captions y thumbnails. Proponer protocolo de publicación optimizado para AI Search como nuevo estándar.
+          Trend sprint de 30 min · 5 PM · con content. Salir con 3 conceptos rodables para beauty, beverage y fashion.
         </p>
       </div>
+
       <div class="mt-5 flex flex-col gap-2">
-        <!-- [INYECTAR_S2_FUENTE_URL] -->
-        <a href="https://nealschaffer.com/instagram-image-search/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">→ Leer fuente (Neal Schaffer)</a>
-        <!-- [INYECTAR_S2_VISUAL_URL] -->
-        <a href="https://www.google.com/search?q=Instagram+AI+visual+search+2026&tbm=isch" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">→ Ver referencia visual 🔍</a>
+        <a href="https://newengen.com/insights/april-2026-tiktok-trends/" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-lime">
+          → Leer fuente (New Engen)
+        </a>
+        <a href="https://www.tiktok.com/search?q=%23CoachellaFits2026" target="_blank" rel="noopener noreferrer" class="link-under text-sm font-semibold text-butter">
+          → Ver #CoachellaFits2026 🌴
+        </a>
       </div>
     </article>
   </div>
 </section>
 
 <!-- ============================================================
-     🎲 MOOD BOARD — Recap del día
+     🎲 MOOD BOARD FINAL — Recap del día en stickers
 ============================================================ -->
 <section class="reveal">
   <div class="flex items-end gap-4 mb-8 pb-4 border-b-2 border-ink">
     <div>
       <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-stone">Extra</span>
-      <h2 class="font-display font-semibold text-4xl md:text-5xl tracking-[-0.03em] leading-none mt-1">Mood del día <span class="emoji-xl">🎲</span></h2>
+      <h2 class="font-display font-semibold text-4xl md:text-5xl tracking-[-0.03em] leading-none mt-1">
+        Mood del día <span class="emoji-xl">🎲</span>
+      </h2>
     </div>
   </div>
-  <!-- [INYECTAR: 4 mood cards — rating, energía, prioridad, oportunidad] -->
+
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
     <div class="paper-card p-5 rot-n2" style="background:#C8E85D;">
-      <div class="emoji-xl mb-2">🤖</div>
+      <div class="emoji-xl mb-2">🔥</div>
       <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Rating del día</p>
-      <p class="font-display text-2xl font-semibold mt-1">IA Agéntica</p>
-      <p class="font-editorial italic text-sm mt-2 text-slate">La IA ya compra medios sola. El briefing manual tiene los días contados.</p>
+      <p class="font-display text-2xl font-semibold mt-1">Upfront Season</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Amazon presenta esta noche. El juego se juega en data + tech, no solo contenido.</p>
     </div>
     <div class="paper-card p-5 rot-2" style="background:#FFB5C5;">
       <div class="emoji-xl mb-2">☕</div>
       <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Energía equipo</p>
-      <p class="font-display text-2xl font-semibold mt-1">Triple espresso</p>
-      <p class="font-editorial italic text-sm mt-2 text-slate">Meta + IAB + WARC hoy. Hay mucho que digerir y proponer.</p>
+      <p class="font-display text-2xl font-semibold mt-1">Backyard Legends</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Adidas definió el estándar creativo del Mundial 2026 con un solo film.</p>
     </div>
     <div class="paper-card p-5 rot-n2" style="background:#F5B700;">
       <div class="emoji-xl mb-2">🎯</div>
       <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Prioridad #1</p>
-      <p class="font-display text-2xl font-semibold mt-1">Catálogo Meta</p>
-      <p class="font-editorial italic text-sm mt-2 text-slate">Auditar catálogos de productos antes del Q4 para Instagram AI.</p>
+      <p class="font-display text-2xl font-semibold mt-1">AI Visibility</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">Claude busca local, ChatGPT vende ads. ¿Tus clientes están optimizados?</p>
     </div>
     <div class="paper-card p-5 rot-2" style="background:#A8E6CF;">
       <div class="emoji-xl mb-2">🚀</div>
       <p class="font-mono text-[10px] uppercase tracking-wider text-stone">Oportunidad</p>
-      <p class="font-display text-2xl font-semibold mt-1">Video Digital</p>
-      <p class="font-editorial italic text-sm mt-2 text-slate">$80B y creciendo 20% más rápido que el mercado. El early mover gana.</p>
+      <p class="font-display text-2xl font-semibold mt-1">LinkedIn CTV</p>
+      <p class="font-editorial italic text-sm mt-2 text-slate">B2B en streaming TV vía Amazon DSP. El early mover gana.</p>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     🎁 WATER COOLER TALK
+     🎁 CAJA FINAL — Water cooler talk
 ============================================================ -->
 <section class="reveal paper-card p-8 md:p-12 relative" style="background:#141414; color:#FDF6E3;">
   <div class="tape" style="background:#C8E85D;"></div>
+
   <div class="text-center max-w-3xl mx-auto">
     <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-lime mb-4">☕ Water cooler talk</p>
     <h3 class="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] font-semibold mb-6">
       ¿Qué tema vas a llevar al <span class="font-editorial italic text-lime">lunch</span> hoy?
     </h3>
     <p class="font-editorial italic text-lg text-butter/80 mb-8">
-      Escoge tu favorita del día y tírala cuando alguien diga "¿qué hay de nuevo?". Te vas a ver muy inteligente 😎
+      Escoge tu favorita del día y tírala cuando alguien diga "¿qué hay de nuevo?".
+      Te vas a ver muy inteligente 😎
     </p>
-    <!-- [INYECTAR: 4 frases del día para water cooler] -->
     <div class="flex flex-wrap gap-3 justify-center">
-      <span class="chip" style="background:#C8E85D; color:#141414;">"Meta ya superó a Google en ads"</span>
-      <span class="chip" style="background:#FFB5C5; color:#141414;">"Billie Eilish está en Roblox hoy"</span>
-      <span class="chip" style="background:#F5B700; color:#141414;">"La IA compra medios sola ahora"</span>
-      <span class="chip" style="background:#A8E6CF; color:#141414;">"WARC redefinió la medición hoy"</span>
+      <span class="chip" style="background:#C8E85D; color:#141414;">"Timothée Chalamet en un ad de fútbol"</span>
+      <span class="chip" style="background:#FFB5C5; color:#141414;">"Amazon presenta upfront esta noche"</span>
+      <span class="chip" style="background:#F5B700; color:#141414;">"Claude ya hace búsqueda local"</span>
+      <span class="chip" style="background:#A8E6CF; color:#141414;">"ChatGPT abrió ads self-serve"</span>
     </div>
   </div>
 </section>
@@ -1004,10 +1311,9 @@
     </div>
     <div class="font-mono text-xs text-stone space-y-1.5 uppercase tracking-wider">
       <p class="text-ink font-semibold">Próxima edición</p>
-      <p>Lunes 11 Mayo · 09:00 h</p>
+      <p>Mañana 09:00 h</p>
       <p>Ventana: 24h</p>
-      <!-- [INYECTAR: número de fuentes escaneadas] -->
-      <p>Fuentes hoy: 52</p>
+      <p>Fuentes hoy: 58</p>
     </div>
     <div class="font-mono text-xs text-stone space-y-1.5 uppercase tracking-wider">
       <p class="text-ink font-semibold">Clasificación</p>
@@ -1022,7 +1328,7 @@
      ⚙️ SCRIPTS
 ============================================================ -->
 <script>
-  // Fecha dinámica automática
+  // Fecha dinámica
   (function(){
     const hoy = new Date();
     const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
@@ -1031,27 +1337,34 @@
     const mes = meses[hoy.getMonth()];
     const anio = hoy.getFullYear();
     const dSemana = dias[hoy.getDay()];
+
     document.getElementById('edicion-fecha-top').textContent = `${dSemana}, ${dia} ${mes} ${anio}`;
     document.getElementById('dia-mega').textContent = dia;
     document.getElementById('mes-anio-top').textContent = `${mes} · ${anio}`;
     document.getElementById('dia-semana-top').textContent = dSemana;
   })();
 
-  // Filtros por departamento
+  // Filtros
   const chips = document.querySelectorAll('.fchip');
   const articles = document.querySelectorAll('article[data-category]');
   const sections = document.querySelectorAll('section[data-section]');
+
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const f = chip.dataset.filter;
+
       if (f === 'all') {
         articles.forEach(a => a.style.display = '');
         sections.forEach(s => s.style.display = '');
       } else {
-        articles.forEach(a => { a.style.display = a.dataset.category === f ? '' : 'none'; });
-        sections.forEach(s => { s.style.display = s.dataset.section === f ? '' : 'none'; });
+        articles.forEach(a => {
+          a.style.display = a.dataset.category === f ? '' : 'none';
+        });
+        sections.forEach(s => {
+          s.style.display = s.dataset.section === f ? '' : 'none';
+        });
       }
     });
   });
@@ -1059,7 +1372,9 @@
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.style.animationPlayState = 'running'; }
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
@@ -1067,4 +1382,3 @@
 
 </body>
 </html>
-
