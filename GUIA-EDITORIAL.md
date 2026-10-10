@@ -236,7 +236,7 @@ Son las mismas fuentes del periódico anterior y se mantienen. Alimentan a Medio
 
 ## Zoom a RD
 
-**Qué es.** Lo que se mueve en el mercado publicitario dominicano: campañas, premios, medios, gobierno y bien público, gremios, consumo y agenda. Na' de afuera, puro patio.
+**Qué es.** Lo que se mueve en el mercado publicitario dominicano (campañas, premios, medios, gobierno y bien público, gremios, consumo y agenda) y las tendencias del patio que le sirven a la agencia. Na’ de afuera, puro patio.
 
 **Regla de fuentes.** **Solo medios y fuentes dominicanas.** Zoom a RD no usa medios internacionales. Si una noticia dominicana solo salió afuera, no va hasta que la publique un medio o una fuente oficial de aquí.
 
@@ -259,6 +259,33 @@ Son las mismas fuentes del periódico anterior y se mantienen. Alimentan a Medio
   - Pro Consumidor
   - Las salas de prensa de los ministerios
 - **Las marcas y agencias locales:** sus salas de prensa y redes oficiales.
+
+**Tendencias dominicanas.** Además de las noticias del mercado, Zoom a RD trae **lo que se está moviendo en el patio**. Una tendencia entra solo si le aporta algo concreto a por lo menos un departamento, o sea, si se le puede sacar un «Lo que toca hacer».
+
+Qué cuenta como tendencia:
+- **Música y cultura urbana:** el tema o el artista que está pegao, los conciertos grandes y las colaboraciones con marcas.
+- **Redes:** la frase, el meme, el reto o el creador dominicano que se volvió viral esta semana.
+- **TV, radio, streaming y podcasts locales:** estrenos, programas y personalidades que están dando de qué hablar, y movimientos de talentos entre medios.
+- **Arte, cine y cultura:** exposiciones, festivales, películas dominicanas, ferias y temporadas (patronales, carnaval, Navidad).
+- **Consumo y estilo de vida:** lo que la gente está comprando, comiendo o haciendo, con dato que lo respalde.
+
+**A quién le sirve cada tendencia:**
+- Un tema viral, un meme o un creador le sirve a Content y a Creatividad.
+- Un programa, un talento o un cambio de audiencia le sirve a Medios.
+- Un hábito de consumo o una temporada le sirve a Planning.
+- Una tendencia con datos de búsqueda o de audiencia le sirve a Data.
+
+**Fuentes de tendencias (solo dominicanas):**
+- **Arte y Medio** (arteymedio.com.do, hoy dentro del portal de Telesistema 11): farándula, televisión, radio y redes.
+- **Remolacha.net:** lo que se comenta en el país, con tono criollo.
+- **Las secciones de entretenimiento y estilo de vida:** Diario Libre (Revista), Listín Diario (Entretenimiento), El Día (Vida y Estilo) y Hoy.
+- **Premios y gremios del espectáculo:** Premios Soberano (Acroarte) y Premios Heat.
+- **Datos de tendencia en RD:**
+  - Google Trends con país República Dominicana (trends.google.com, país DO), para ver qué está buscando la gente.
+  - Las listas de tendencias de TikTok, Instagram y YouTube filtradas por República Dominicana, cuando la plataforma lo permite.
+- **Las redes oficiales** de artistas, creadores, medios y marcas dominicanas, solo para confirmar el dato que ya reportó un medio.
+
+**Cuidado con el tono.** La farándula y la música urbana pueden venir con lenguaje fuerte. En El Pulso se cuenta la tendencia sin repetir groserías ni dobles sentidos, y sin burlarse de nadie. Si una tendencia no se puede contar sin eso, no va.
 
 **Interactivo:** `pregunta`. Una sola pregunta con 3 opciones, cuya respuesta esté en las notas de Zoom a RD, y una explicación corta.
 
