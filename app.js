@@ -128,13 +128,11 @@
       return '<li><a class="letrero-html c-' + d + '" href="#' + d + '"><b>' + esc(dep(d).nombre) + "</b><span>" +
         notasDe(d).length + (notasDe(d).length === 1 ? " nota" : " notas") + "</span></a></li>";
     }).join("");
-    var nFuentes = agruparFuentes().length;
     return '<section class="escena" id="portada" aria-labelledby="cabecera">' +
       '<canvas class="escena__lienzo" id="lienzo" aria-hidden="true"></canvas>' +
       '<div class="escena__marco">' +
       '<h1 class="pizarra__cabecera rot" id="cabecera">' + cabeceraHTML() + "</h1>" +
-      '<p class="pizarra__fecha"><span>Edición <b>N.º ' + E.numero + '</b></span><span class="solo-ancho">' + esc(E.fecha) + '</span><span class="solo-movil">' + esc(E.fechaCorta) + "</span><span>" + esc(E.hora) + '</span><span class="solo-ancho">' +
-      E.notas.length + " notas · " + nFuentes + " fuentes</span></p>" +
+      '<p class="pizarra__fecha"><span>Edición <b>N.º ' + E.numero + '</b></span><span class="solo-ancho">' + esc(E.fecha) + '</span><span class="solo-movil">' + esc(E.fechaCorta) + "</span></p>" +
       '<ul class="letreros-html" aria-label="Departamentos de hoy">' + letreros + "</ul>" +
       '<button class="escena__pausa" type="button" id="escenaPausa" aria-pressed="false">' + ico("pausa") + '<span class="sr">Pausar la animación</span></button>' +
       "</div></section>";
