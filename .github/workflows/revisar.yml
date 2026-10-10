@@ -1,0 +1,21 @@
+# El Pulso Publicitario · revisa cada edición que llega a main
+# GitHub Pages publica la rama main tal cual. Esta revisión deja una marca verde o roja en el commit,
+# para ver de un vistazo si la edición del día quedó completa. La rutina corre el mismo validador antes de subir.
+name: Revisar edición
+
+on:
+  push:
+    branches: [main]
+    paths: ["contenido/**", "herramientas/validar-edicion.js"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar la edición del día
+        run: node herramientas/validar-edicion.js

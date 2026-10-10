@@ -1,0 +1,137 @@
+/* El Pulso Publicitario · momentos interactivos (experimento)
+   Mismo idioma que las frases: tablero blanco, banda y filete del color del departamento. */
+
+.juego {
+  --dc: var(--d-pincel, var(--tinta));
+  margin-top: clamp(28px, 4vw, 48px);
+  background: linear-gradient(var(--dc), var(--dc)) top / 100% 16px no-repeat, var(--esmalte);
+  outline: 2px solid var(--dc); outline-offset: -9px;
+  padding: 40px clamp(22px, 3vw, 40px) clamp(22px, 3vw, 32px);
+  color: var(--tinta);
+}
+.juego__cab h3 {
+  margin: 0 0 18px; font-family: var(--pincel); font-weight: 400; color: var(--dc);
+  font-size: clamp(32px, 3vw, 44px); line-height: 1; transform: rotate(-2deg); transform-origin: left bottom;
+}
+.juego__pie { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--filete); }
+.juego__btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; cursor: pointer;
+  border: 2px solid var(--tinta); border-radius: 2px; background: var(--tinta); color: var(--esmalte);
+  font-family: var(--rotulo); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .03em; font-variation-settings: "wdth" 85;
+  transition: transform .3s var(--ease), background .2s, color .2s;
+}
+.juego__btn:hover { transform: translateY(-2px); }
+.juego__btn:disabled { opacity: .6; cursor: default; transform: none; }
+.juego__btn + .juego__btn { background: transparent; color: var(--tinta); }
+.juego__nota { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; font-family: var(--rotulo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--dc); text-decoration: none; }
+.juego__nota:hover { text-decoration: underline; text-underline-offset: .2em; }
+.juego__ayuda { font-family: var(--rotulo); font-size: 13px; color: var(--gris-tinta); }
+
+
+/* ——— raspadito ——— */
+.rasp { position: relative; min-height: 200px; display: grid; }
+.rasp__premio { padding: 26px 24px; background: var(--cal); border: 2px dashed var(--dc); display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.rasp__l { margin: 0; font-family: var(--rotulo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--dc); }
+.rasp__t { margin: 0; font-family: var(--rotulo); font-weight: 700; font-size: clamp(20px, 2vw, 26px); line-height: 1.25; font-variation-settings: "wdth" 82; max-width: 60ch; }
+.rasp__capa { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; touch-action: none; transition: opacity .5s var(--ease); }
+
+
+
+/* ——— la pregunta pa’ la IA ——— */
+.prm__l { display: block; margin: 0 0 10px; font-family: var(--rotulo); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--gris-tinta); }
+.prm__ops { display: grid; gap: 8px; margin-bottom: 18px; }
+.prm__op {
+  text-align: left; min-height: 52px; padding: 12px 16px 12px 46px; cursor: pointer; position: relative;
+  background: var(--cal); border: 2px solid var(--filete); border-radius: 2px; color: var(--tinta);
+  font-family: var(--rotulo); font-weight: 700; font-size: 16px; font-variation-settings: "wdth" 85; transition: border-color .2s, background .2s;
+}
+.prm__op::before { content: ""; position: absolute; left: 16px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border: 2px solid var(--tinta); }
+.prm__op[aria-pressed="true"] { border-color: var(--dc); background: var(--esmalte); }
+.prm__op[aria-pressed="true"]::before { background: var(--dc); border-color: var(--dc); }
+.prm__texto { width: 100%; padding: 14px 16px; resize: vertical; border: 2px solid var(--tinta); border-radius: 0; background: var(--cal); color: var(--tinta); font-family: var(--texto); font-size: 16px; line-height: 1.5; }
+.prm__texto:focus-visible { outline: 3px solid var(--dc); outline-offset: 2px; }
+
+/* ——— una sola pregunta ——— */
+.quiz__p { margin: 0 0 16px; font-family: var(--rotulo); font-weight: 800; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.1; font-variation-settings: "wdth" 76; text-wrap: balance; max-width: 34ch; }
+.quiz__ops { display: grid; gap: 8px; }
+.quiz__op {
+  text-align: left; min-height: 54px; padding: 12px 16px; cursor: pointer; background: var(--cal); color: var(--tinta);
+  border: 2px solid var(--filete); border-radius: 2px; font-family: var(--rotulo); font-weight: 700; font-size: 17px; font-variation-settings: "wdth" 85;
+  transition: border-color .2s, background .2s, transform .25s var(--ease);
+}
+.quiz__op:hover:not(:disabled) { border-color: var(--tinta); transform: translateX(4px); }
+.quiz__op:disabled { cursor: default; }
+.quiz__op.bien { background: var(--medios-osc); border-color: var(--medios-osc); color: var(--esmalte); }
+.quiz__op.mal { background: var(--esmalte); border-color: var(--rd-osc); color: var(--rd-osc); text-decoration: line-through; }
+.quiz__resp { margin-top: 16px; display: grid; gap: 12px; justify-items: start; }
+.quiz__ex { margin: 0; font-size: 17px; line-height: 1.5; color: var(--tinta-lectura); max-width: 60ch; }
+
+@media (min-width: 900px) {
+  .prm { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+  .prm > p.prm__l, .prm__ops { grid-column: 1; }
+  .prm > label.prm__l { grid-column: 2; grid-row: 1; }
+  .prm__texto { grid-column: 2; grid-row: 2; height: 100%; min-height: 200px; }
+  .quiz__ops { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ——— etiqueta de oferta que se despega ——— */
+.etq { position: relative; min-height: 210px; display: grid; overflow: hidden; }
+.etq__fondo { padding: 26px 24px; background: var(--cal); border: 2px dashed var(--dc); display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.etq__l { margin: 0; font-family: var(--rotulo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--dc); }
+.etq__v { margin: 0; font-family: var(--rotulo); font-weight: 800; font-size: clamp(34px, 4vw, 56px); line-height: .95; font-variation-settings: "wdth" 70; color: var(--tinta); }
+.etq__t { margin: 0 0 4px; font-size: 18px; line-height: 1.4; color: var(--tinta-lectura); max-width: 46ch; }
+.etq__sticker {
+  position: absolute; inset: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  background: var(--dc); color: var(--esmalte); border: 0; border-radius: 3px; cursor: grab; touch-action: pan-y;
+  box-shadow: 0 10px 22px rgba(31, 28, 25, .22); transition: transform .45s var(--ease), opacity .45s;
+}
+.etq__sticker::after { /* la esquina doblada invita a despegar */
+  content: ""; position: absolute; right: 0; bottom: 0; width: 46px; height: 46px;
+  background: linear-gradient(135deg, var(--dc) 50%, var(--esmalte) 50%); box-shadow: -3px -3px 6px rgba(31, 28, 25, .18);
+}
+.etq__sticker.arrastrando { transition: none; cursor: grabbing; }
+.etq__sticker.fuera { opacity: 0; pointer-events: none; }
+.etq__sticker:focus-visible { outline: 3px solid var(--tinta); outline-offset: 4px; }
+.etq__oferta { font-family: var(--rotulo); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; opacity: .85; }
+.etq__grande { font-family: var(--rotulo); font-weight: 800; font-size: clamp(38px, 5vw, 64px); line-height: .9; text-transform: uppercase; font-variation-settings: "wdth" 66; }
+.etq__chico { font-family: var(--pincel); font-size: 26px; line-height: 1; }
+
+/* ——— hoja del calendario de escritorio ——— */
+.hoj { position: relative; min-height: 240px; display: grid; padding-top: 18px; }
+.hoj__debajo { padding: 30px 24px 24px; background: var(--esmalte); border: 2px solid var(--dc); display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+.hoj__l { margin: 0; font-family: var(--rotulo); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--dc); }
+.hoj__t { margin: 0; font-family: var(--rotulo); font-weight: 700; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.3; font-variation-settings: "wdth" 82; max-width: 52ch; }
+.hoj__pagina {
+  position: absolute; left: 0; right: 0; top: 18px; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  background: var(--esmalte); color: var(--tinta); border: 2px solid var(--tinta); border-radius: 2px; cursor: grab; touch-action: pan-x;
+  transform-origin: 12% 0; box-shadow: 0 8px 18px rgba(31, 28, 25, .14); transition: transform .5s var(--ease), opacity .5s;
+}
+.hoj__pagina.arrastrando { transition: none; cursor: grabbing; }
+.hoj__pagina.fuera { opacity: 0; pointer-events: none; }
+.hoj__pagina:focus-visible { outline: 3px solid var(--dc); outline-offset: 4px; }
+.hoj__anillas { /* la tira del bloc con su perforación */
+  position: absolute; left: 0; right: 0; top: 0; height: 26px; background: var(--dc);
+  -webkit-mask: radial-gradient(circle at 50% 100%, transparent 5px, #000 5.5px) 0 0 / 28px 26px repeat-x;
+  mask: radial-gradient(circle at 50% 100%, transparent 5px, #000 5.5px) 0 0 / 28px 26px repeat-x;
+}
+.hoj__mes { font-family: var(--rotulo); font-weight: 800; font-size: clamp(44px, 6vw, 84px); line-height: .9; text-transform: uppercase; font-variation-settings: "wdth" 64; color: var(--dc); margin-top: 18px; }
+.hoj__chico { font-family: var(--pincel); font-size: 26px; line-height: 1; color: var(--gris-tinta); }
+
+/* ——— expediente con tachaduras ——— */
+.sec { position: relative; padding: 26px 24px; background: var(--cal); border: 1px solid var(--filete); }
+.sec__sello {
+  position: absolute; right: 18px; top: -14px; margin: 0; padding: 4px 12px; background: var(--esmalte); border: 3px solid var(--rd-osc); color: var(--rd-osc);
+  font-family: var(--rotulo); font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; transform: rotate(4deg);
+  transition: color .3s, border-color .3s;
+}
+.sec__sello.listo { color: var(--medios-osc); border-color: var(--medios-osc); }
+.sec__texto { margin: 0; font-size: clamp(19px, 1.8vw, 23px); line-height: 1.75; color: var(--tinta-lectura); max-width: 60ch; touch-action: pan-y; }
+.sec__dato { position: relative; display: inline-block; white-space: nowrap; line-height: 1.3; }
+.sec__txt { font-family: var(--rotulo); font-weight: 800; color: var(--tinta); font-variation-settings: "wdth" 82; background: rgba(140, 78, 50, .14); padding: 0 3px; }
+.sec__barra {
+  position: absolute; left: -3px; right: -3px; top: 6%; bottom: 6%; padding: 0; border: 0; border-radius: 1px; cursor: pointer;
+  background: var(--tinta); transform-origin: left; transition: transform .45s var(--ease);
+}
+.sec__barra.fuera { transform: scaleX(0); pointer-events: none; }
+.sec__barra:focus-visible { outline: 3px solid var(--dc); outline-offset: 2px; }
+.etq__sticker, .hoj__pagina, .rasp__capa { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }

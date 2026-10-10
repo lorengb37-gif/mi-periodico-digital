@@ -1,0 +1,22 @@
+/* Piezas compartidas: aviso, accesibilidad y movimiento */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ico { width: 1.1em; height: 1.1em; flex: none; }
+html.cargando body { overflow: hidden; }
+
+/* aviso (copiado, modo) */
+.p-aviso {
+  position: fixed; left: 50%; bottom: 20px; z-index: 90;
+  transform: translate(-50%, calc(100% + 40px)); visibility: hidden;
+  padding: 12px 18px; background: #1F1C19; color: #FBF8F3;
+  font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase;
+  font-variation-settings: "wdth" 85;
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1), visibility 0s linear .5s;
+}
+.p-aviso.ver { transform: translate(-50%, 0); visibility: visible; transition: transform .5s cubic-bezier(.16, 1, .3, 1), visibility 0s; }
+
+
+/* sin movimiento */
+.quieto *, .quieto *::before, .quieto *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
