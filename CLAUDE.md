@@ -5,7 +5,7 @@ Boletín diario de publicidad, mercadeo y ad tech para la gente de agencia en Re
 - **URL pública:** https://lorengb37-gif.github.io/mi-periodico-digital/
 - **Repositorio:** lorengb37-gif/mi-periodico-digital (GitHub Pages publica la rama `main` tal cual)
 - **Frecuencia:** diaria, 8:00 AM hora de Santo Domingo (GMT-4)
-- **Idioma y tono:** español dominicano, directo y de tú a tú («pa'», «to'», «¿Y eso en qué nos toca?»)
+- **Idioma y tono:** español dominicano como el de Remolacha.net: criollo, con chispa y de tú a tú («pa'», «to'», «un chin», «¿Y eso en qué nos toca?»), pero **nunca vulgar**: sin malas palabras, sin doble sentido y sin burlas. Detalles y ejemplos en «Cómo se escribe» de `GUIA-EDITORIAL.md`.
 
 ## Cómo está armado
 
@@ -26,13 +26,13 @@ La edición del **2026-09-11** es la referencia completa: trae todos los campos,
 
 1. `git checkout main` y `git pull origin main`.
 2. Lee `GUIA-EDITORIAL.md` completa y `contenido/ediciones/2026-09-11.js` (plantilla de estructura y tono).
-3. **Busca noticias reales** de las últimas 24 a 72 horas, departamento por departamento, en las fuentes de la guía:
+3. **Busca noticias reales** de las últimas 24 a 72 horas, departamento por departamento. Usa las «Fuentes de siempre» y las «Búsquedas base» de la guía (las mismas del periódico anterior), más las fuentes propias de cada departamento:
    - **Content:** las tendencias de la semana en TikTok, Instagram, YouTube y X, y las funciones nuevas de las plataformas.
    - **Creatividad:** campañas destacadas, tendencias creativas y premios.
    - **Medios:** inventario, compra y medición.
    - **Planning:** consumidor, temporadas y datos.
    - **Data:** privacidad, regulación y medición.
-   - **Zoom a RD:** solo mercado dominicano (vale hasta una semana atrás). Cada nota lleva `para`, con los departamentos a los que les sirve.
+   - **Zoom a RD:** solo mercado dominicano y **solo fuentes dominicanas** (las de la guía: Diario Libre, Listín, Remolacha, El Dinero, Revista Mercado, ADECC, Mitur, Banco Central…). Vale hasta una semana atrás. Cada nota lleva `para`, con los departamentos a los que les sirve.
 4. **Abre cada fuente** con WebFetch para confirmar el dato, la fecha y la URL directa del artículo. Si no puedes abrir las fuentes (por ejemplo, la red falla), **no publiques**: deja la edición anterior, no hagas commit y reporta el error.
 5. Crea `contenido/ediciones/<hoy AAAA-MM-DD>.js` con la misma estructura de la plantilla:
    - `numero` es el **día del año** de hoy: 1 de enero = 1, 31 de diciembre = 365 (366 en año bisiesto). Ejemplo: el 11 de octubre de 2026 es la 284.
@@ -58,7 +58,7 @@ La edición del **2026-09-11** es la referencia completa: trae todos los campos,
 
 **Debes:**
 - Usar solo noticias reales con su fuente. Ni cifras, ni citas, ni fechas, ni nombres inventados.
-- Escribir con el tono dominicano de la plantilla.
+- Escribir en dominicano, como Remolacha.net pero sin vulgaridad, y sin expresiones de otros países (nada de «comprá», «vale», «tío»).
 - Escribir un «Lo que toca hacer» concreto para esta semana.
 - Subir directo a `main`.
 

@@ -32,7 +32,7 @@ window.ARCHIVO = [
   { fecha: "2026-09-26", numero: 269, archivo: "ediciones/2026-09-26.js", portada: "Higgsfield ya factura US$1,000M anualizados, 70% viene de agencias" },
   { fecha: "2026-09-24", numero: 267, archivo: "ediciones/2026-09-24.js", portada: "Equativ, Quartile y Amazon Ads se suman a la publicidad de ChatGPT" },
   { fecha: "2026-09-23", numero: 266, archivo: "ediciones/2026-09-23.js", portada: "Google evita el breakup de su ad tech, pero queda 6 años bajo monitor" },
-  { fecha: "2026-09-22", numero: 265, archivo: "ediciones/2026-09-22.js", portada: "OpenAI y Amazon Ads: comprá espacio en ChatGPT vía DSP" },
+  { fecha: "2026-09-22", numero: 265, archivo: "ediciones/2026-09-22.js", portada: "OpenAI y Amazon Ads: compra espacio en ChatGPT vía DSP" },
   { fecha: "2026-09-21", numero: 264, archivo: "ediciones/2026-09-21.js", portada: "Meta le arrebataría a Google el trono publicitario global en 2026" },
   { fecha: "2026-09-20", numero: 263, archivo: "ediciones/2026-09-20.js", portada: "Infillion compra Foursquare y cierra el loop de la data real" },
   { fecha: "2026-09-19", numero: 262, archivo: "ediciones/2026-09-19.js", portada: "Meta podría superar a Google en ad revenue de Search en 2026" },
