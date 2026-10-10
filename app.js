@@ -740,7 +740,7 @@
 
     // fonts.ready puede resolverse antes de pedir Archivo: se pide explícito
     var listo = document.fonts && document.fonts.load
-      ? Promise.all([document.fonts.load('800 100px "Archivo"'), document.fonts.load('400 40px "Yellowtail"')]).then(function () { return document.fonts.ready; }, function () {})
+      ? Promise.all([document.fonts.load('800 100px "Archivo"'), document.fonts.load('400 100px "Shrikhand"'), document.fonts.load('400 40px "Yellowtail"')]).then(function () { return document.fonts.ready; }, function () {})
       : Promise.resolve();
     if (document.fonts && document.fonts.addEventListener) {
       document.fonts.addEventListener("loadingdone", function () { reajustarTodo(); medirParedes(); });
