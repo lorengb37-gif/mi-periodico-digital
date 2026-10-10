@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-10", numero: 283, archivo: "ediciones/2026-10-10.js", portada: "Omnicom compra escenas dentro de las series" },
   { fecha: "2026-10-09", numero: 282, archivo: "ediciones/2026-10-09.js", portada: "TikTok abre su Ad Network a anunciantes de EE.UU." },
   { fecha: "2026-10-08", numero: 281, archivo: "ediciones/2026-10-08.js", portada: "Meta lanza IA con memoria y checkout en Messenger" },
   { fecha: "2026-10-07", numero: 280, archivo: "ediciones/2026-10-07.js", portada: "OpenAI lanza anuncios visuales en ChatGPT (EE.UU.)" },
