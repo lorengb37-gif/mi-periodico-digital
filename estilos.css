@@ -30,7 +30,7 @@
   --rotulo: "Archivo", "Archivo Narrow", sans-serif;
   --texto: "Source Serif 4", Georgia, serif;
   --pincel: "Yellowtail", "Source Serif 4", cursive;
-  --marca: "Newsreader", "Source Serif 4", Georgia, serif; /* la marca: cursiva de periódico, cercana */
+  --marca: var(--rotulo); /* la marca: la misma letra del Consejo del día, en mayúsculas */
 
   --fachada-h: 60px;
   --margen: clamp(16px, 4vw, 56px);
@@ -102,8 +102,8 @@ a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1.5
   text-decoration: none; flex: none;
 }
 .fachada__nombre {
-  font-family: var(--marca); font-style: italic; font-weight: 800; text-transform: none;
-  font-size: 23px; line-height: 1; letter-spacing: -.01em; font-variation-settings: "opsz" 24;
+  font-family: var(--marca); font-weight: 800; text-transform: uppercase;
+  font-size: 22px; line-height: 1; font-variation-settings: "wdth" 70;
 }
 .fachada__num {
   font-family: var(--rotulo); font-size: 13px; font-weight: 600;
@@ -176,8 +176,8 @@ a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1.5
 }
 .pizarra__cabecera { margin: 0; font-size: clamp(64px, 13vw, 200px); color: var(--esmalte); }
 .pizarra__cabecera span + span { margin-top: .04em; }
-.pizarra__cabecera { font-family: var(--marca); font-style: italic; font-weight: 800; text-transform: none; line-height: 1.08; letter-spacing: -.015em; }
-.pizarra__cabecera [data-ajuste] { overflow: visible; font-variation-settings: "opsz" 72; } /* la cursiva se asoma un chin por la derecha */
+.pizarra__cabecera { font-family: var(--marca); font-style: normal; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: 0; }
+.pizarra__cabecera [data-ajuste] { font-variation-settings: "wdth" 70; } /* ancho fijo, como el Consejo del día; se ajusta solo con el tamaño */
 .pizarra__fecha {
   display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 18px 0 0;
   font-family: var(--rotulo); font-size: 15px; font-weight: 600;

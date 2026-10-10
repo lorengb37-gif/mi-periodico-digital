@@ -380,7 +380,8 @@
   }
   function reajustarTodo() {
     $$("[data-ajuste]").forEach(function (el) {
-      if (!obsAjuste || vistos.has(el) || reduce.matches) ajustar(el, false);
+      // la cabecera de portada siempre se re-mide: es lo primero que se ve
+      if (!obsAjuste || vistos.has(el) || reduce.matches || el.closest("#cabecera")) ajustar(el, false);
     });
   }
 
@@ -740,7 +741,7 @@
 
     // fonts.ready puede resolverse antes de pedir Archivo: se pide explícito
     var listo = document.fonts && document.fonts.load
-      ? Promise.all([document.fonts.load('800 100px "Archivo"'), document.fonts.load('italic 800 100px "Newsreader"'), document.fonts.load('400 40px "Yellowtail"')]).then(function () { return document.fonts.ready; }, function () {})
+      ? Promise.all([document.fonts.load('800 100px "Archivo"'), document.fonts.load('400 40px "Yellowtail"')]).then(function () { return document.fonts.ready; }, function () {})
       : Promise.resolve();
     if (document.fonts && document.fonts.addEventListener) {
       document.fonts.addEventListener("loadingdone", function () { reajustarTodo(); medirParedes(); });
