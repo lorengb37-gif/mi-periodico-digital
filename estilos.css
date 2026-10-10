@@ -691,7 +691,7 @@ body.rapida .tablero h3 { margin-bottom: 14px; }
 .escena {
   position: relative; isolation: isolate; overflow: hidden;
   min-height: min(100svh, 1040px); background: var(--pizarra); color: var(--esmalte);
-  padding: calc(var(--fachada-h) + 28px) var(--margen) 28px;
+  padding: calc(var(--fachada-h) + clamp(44px, 5vw, 80px)) var(--margen) 28px; /* aire entre la barra de departamentos y el título */
   display: flex; flex-direction: column;
 }
 .escena::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--grano); opacity: .32; mix-blend-mode: overlay; pointer-events: none; }
@@ -946,7 +946,7 @@ body.rapida .txt-rapida-off { display: none; }
 }
 .cal-aviso p { margin: 0; }
 .cal-aviso a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; color: var(--esmalte); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; text-decoration: underline; text-underline-offset: .2em; }
-.edicion-anterior .escena { padding-top: calc(var(--fachada-h) + 76px); }
+.edicion-anterior .escena { padding-top: calc(var(--fachada-h) + 76px + clamp(28px, 4vw, 56px)); }
 .edicion-anterior .nota__pared { padding-top: calc(var(--fachada-h) + 76px); }
 
 @media (max-width: 759px) {
