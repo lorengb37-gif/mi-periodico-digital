@@ -1,5 +1,5 @@
-/* Shrikhand: rotulado de letrero pintado a mano, solo pa' la marca. Sin internet cae en Archivo. */
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+/* Newsreader cursiva: tipografía de periódico, solo pa' la marca. Sin internet cae en Source Serif 4. */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,700;1,6..72,800&display=swap');
 /* vietnamese */
 @font-face {
   font-family: 'Archivo';
