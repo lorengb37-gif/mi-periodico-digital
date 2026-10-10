@@ -355,7 +355,7 @@ window.EDICION = {
     "medios": {
       "tipo": "etiqueta",
       "nota": "meta-presenta-con",
-      "titulo": "Despega la oferta del día"
+      "titulo": "Despega el dato del día"
     },
     "creatividad": {
       "tipo": "raspadito",

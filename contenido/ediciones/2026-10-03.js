@@ -344,7 +344,7 @@ window.EDICION = {
     "medios": {
       "tipo": "etiqueta",
       "nota": "amazon-funde-dsp",
-      "titulo": "Despega la oferta del día"
+      "titulo": "Despega el dato del día"
     },
     "creatividad": {
       "tipo": "raspadito",

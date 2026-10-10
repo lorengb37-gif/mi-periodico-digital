@@ -319,7 +319,7 @@ window.EDICION = {
        hoja        nota, titulo, mes, revela · se arranca la hoja del calendario
        secreto     nota, titulo, texto con los datos entre [[ ]] · se quitan las tachaduras */
   interactivos: {
-    medios: { tipo: "etiqueta", nota: "amazon", titulo: "Despega la oferta del día" },
+    medios: { tipo: "etiqueta", nota: "amazon", titulo: "Despega el dato del día" },
     planning: {
       tipo: "hoja", nota: "pinterest", titulo: "Arranca la hoja", mes: "Septiembre",
       revela: "Pinterest dice que la Navidad arranca ya: activa la temporada entre septiembre y noviembre. Con el funnel completo, sus anunciantes promediaron un iROAS de 3.71."

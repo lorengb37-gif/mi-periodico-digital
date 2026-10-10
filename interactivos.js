@@ -135,16 +135,16 @@
     el.addEventListener("pointercancel", fin);
   }
 
-  /* ——— Medios: despegar la etiqueta de oferta del espacio ——— */
+  /* ——— Medios: despegar la etiqueta y descubrir el dato del día ——— */
   function etiqueta(d, cfg) {
     var n = nota(cfg.nota);
     var c = n && n.cifras && n.cifras[0];
     if (!c) return null;
     var html = caja(d, cfg,
       '<div class="etq">' +
-      '<div class="etq__fondo"><p class="etq__l">El dato del día</p><p class="etq__v">' + esc(c.v) + '</p><p class="etq__t">' + esc(c.t) + "</p>" + abrirNota(n) + "</div>" +
+      '<div class="etq__fondo"><p class="etq__l">' + esc(n.corto || n.titular) + '</p><p class="etq__v">' + esc(c.v) + '</p><p class="etq__t">' + esc(c.t) + "</p>" + abrirNota(n) + "</div>" +
       '<button type="button" class="etq__sticker" aria-label="Despegar la etiqueta y ver el dato del día">' +
-      '<span class="etq__oferta">Espacio disponible</span><span class="etq__grande">Despégame</span><span class="etq__chico">jálala pa’l lado</span></button>' +
+      '<span class="etq__oferta">Dato escondido</span><span class="etq__grande">Despégame</span><span class="etq__chico">jálala pa’l lado</span></button>' +
       "</div>");
     return { html: html, init: function (raiz) {
       var st = $(".etq__sticker", raiz), fuera = false;

@@ -364,7 +364,7 @@ window.EDICION = {
     "medios": {
       "tipo": "etiqueta",
       "nota": "tiktok-abre-network",
-      "titulo": "Despega la oferta del día"
+      "titulo": "Despega el dato del día"
     },
     "creatividad": {
       "tipo": "raspadito",

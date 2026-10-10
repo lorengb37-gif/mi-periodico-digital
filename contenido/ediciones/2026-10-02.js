@@ -343,7 +343,7 @@ window.EDICION = {
     "medios": {
       "tipo": "etiqueta",
       "nota": "iab-eleva-pronostico",
-      "titulo": "Despega la oferta del día"
+      "titulo": "Despega el dato del día"
     },
     "creatividad": {
       "tipo": "raspadito",

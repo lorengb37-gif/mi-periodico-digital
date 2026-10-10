@@ -243,7 +243,7 @@ window.EDICION = {
   },
 
   interactivos: {
-    medios: { tipo: "etiqueta", nota: "omnicom", titulo: "Despega la oferta del día" },
+    medios: { tipo: "etiqueta", nota: "omnicom", titulo: "Despega el dato del día" },
     creatividad: { tipo: "raspadito", titulo: "Raspa la idea del día" },
     planning: {
       tipo: "hoja", nota: "circana", titulo: "Arranca la hoja", mes: "Octubre",

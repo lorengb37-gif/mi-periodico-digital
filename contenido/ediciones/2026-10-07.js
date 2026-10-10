@@ -354,7 +354,7 @@ window.EDICION = {
     "medios": {
       "tipo": "etiqueta",
       "nota": "openai-lanza-anuncios",
-      "titulo": "Despega la oferta del día"
+      "titulo": "Despega el dato del día"
     },
     "creatividad": {
       "tipo": "raspadito",
