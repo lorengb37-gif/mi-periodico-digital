@@ -33,7 +33,7 @@ La edición del **2026-09-11** es la referencia completa: trae todos los campos,
    - **Planning:** consumidor, temporadas y datos.
    - **Data:** privacidad, regulación y medición.
    - **Zoom a RD:** solo mercado dominicano y **solo fuentes dominicanas** (las de la guía: Diario Libre, Listín, Remolacha, El Dinero, Revista Mercado, ADECC, Mitur, Banco Central…). Incluye también **tendencias dominicanas** (música, redes, TV y radio, arte y cultura, consumo) de fuentes como Arte y Medio, Remolacha y las secciones de entretenimiento, solo si le sirven a algún departamento. Vale hasta una semana atrás. Cada nota lleva `para`, con los departamentos a los que les sirve.
-4. **Abre cada fuente** con WebFetch para confirmar el dato, la fecha y la URL directa del artículo. Si no puedes abrir las fuentes (por ejemplo, la red falla), **no publiques**: deja la edición anterior, no hagas commit y reporta el error.
+4. **Abre cada fuente** con WebFetch para confirmar el dato, la fecha y la URL directa del artículo. Si WebFetch falla (por ejemplo, con `ENOTFOUND`), abre las fuentes con `curl -sS -L -A "Mozilla/5.0" <url>` desde Bash y extrae el texto del artículo. Solo si tampoco funciona `curl` (por ejemplo, la red falla), **no publiques**: deja la edición anterior, no hagas commit y reporta el error.
 5. Crea `contenido/ediciones/<hoy AAAA-MM-DD>.js` con la misma estructura de la plantilla:
    - `numero` es el **día del año** de hoy: 1 de enero = 1, 31 de diciembre = 365 (366 en año bisiesto). Ejemplo: el 11 de octubre de 2026 es la 284.
    - `fechaISO` es la fecha de hoy. `fecha` va como «Domingo 11 de octubre 2026» y `fechaCorta` como «11 oct 2026».
