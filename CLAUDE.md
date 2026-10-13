@@ -64,6 +64,7 @@ La edición del **2026-09-11** es la referencia completa: trae todos los campos,
 
 **No debes:**
 - Modificar el diseño (`index.html`, `*.css`, `*.js` fuera de `contenido/`, `comun/`, `fuentes/`, `vendor/`).
+- Tocar, borrar, mover ni duplicar el bloque de métricas de `index.html`: va entre los comentarios `<!-- MÉTRICAS ... -->` y `<!-- FIN MÉTRICAS -->` y trae tres scripts (Google Analytics 4 `G-5M0YE8GS6S`, Microsoft Clarity `yx1s3cib46` y GoatCounter `elpulsopublicitario`). Con ellos se miden las visitas diarias. Como la rutina solo hace `git add contenido/`, ese bloque debe quedar intacto.
 - Borrar ni editar ediciones de días anteriores ni sus líneas en `archivo.js`, porque son el archivo del calendario.
 - Crear ramas ni pull requests.
 - Poner avisos sobre el número de edición.
