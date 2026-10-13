@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-13", numero: 286, archivo: "ediciones/2026-10-13.js", portada: "Publicis le vende directo a los CEO y deja el concurso de Coca-Cola" },
   { fecha: "2026-10-12", numero: 285, archivo: "ediciones/2026-10-12.js", portada: "PepsiCo pasa su cuenta de medios de Omnicom a Publicis" },
   { fecha: "2026-10-11", numero: 284, archivo: "ediciones/2026-10-11.js", portada: "Amazon Ads sube 15 %–40 % con Prime Big Deal Days" },
   { fecha: "2026-10-10", numero: 283, archivo: "ediciones/2026-10-10.js", portada: "Omnicom compra escenas dentro de las series" },
