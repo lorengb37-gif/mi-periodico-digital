@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-19", numero: 292, archivo: "ediciones/2026-10-19.js", portada: "Google deja priorizar canales y topar el gasto" },
   { fecha: "2026-10-18", numero: 291, archivo: "ediciones/2026-10-18.js", portada: "Meta vende ventanas de alcance de 3 a 24 horas" },
   { fecha: "2026-10-17", numero: 290, archivo: "ediciones/2026-10-17.js", portada: "Google Ads deja poner tope a Display y socios" },
   { fecha: "2026-10-16", numero: 289, archivo: "ediciones/2026-10-16.js", portada: "Meta prende la navegación de productos el 28 de octubre" },
