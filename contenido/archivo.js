@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-21", numero: 294, archivo: "ediciones/2026-10-21.js", portada: "Netflix baja su meta de publicidad a US$2,700M" },
   { fecha: "2026-10-20", numero: 293, archivo: "ediciones/2026-10-20.js", portada: "Meta vende ventanas de exposición de 3 a 24 horas" },
   { fecha: "2026-10-19", numero: 292, archivo: "ediciones/2026-10-19.js", portada: "Google deja priorizar canales y topar el gasto" },
   { fecha: "2026-10-18", numero: 291, archivo: "ediciones/2026-10-18.js", portada: "Meta vende ventanas de alcance de 3 a 24 horas" },
