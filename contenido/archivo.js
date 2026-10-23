@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-23", numero: 296, archivo: "ediciones/2026-10-23.js", portada: "Meta pone el riesgo de su IA del lado del anunciante" },
   { fecha: "2026-10-22", numero: 295, archivo: "ediciones/2026-10-22.js", portada: "OpenAI reescribirá por defecto los anuncios de ChatGPT" },
   { fecha: "2026-10-21", numero: 294, archivo: "ediciones/2026-10-21.js", portada: "Netflix baja su meta de publicidad a US$2,700M" },
   { fecha: "2026-10-20", numero: 293, archivo: "ediciones/2026-10-20.js", portada: "Meta vende ventanas de exposición de 3 a 24 horas" },
