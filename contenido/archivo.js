@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-26", numero: 299, archivo: "ediciones/2026-10-26.js", portada: "Pinterest abre su inventario a la programática" },
   { fecha: "2026-10-25", numero: 298, archivo: "ediciones/2026-10-25.js", portada: "Agencias chicas reclaman comisiones dobles en DSP" },
   { fecha: "2026-10-24", numero: 297, archivo: "ediciones/2026-10-24.js", portada: "Omnicom se lleva los medios de Coca-Cola en Norteamérica" },
   { fecha: "2026-10-23", numero: 296, archivo: "ediciones/2026-10-23.js", portada: "Meta pone el riesgo de su IA del lado del anunciante" },
