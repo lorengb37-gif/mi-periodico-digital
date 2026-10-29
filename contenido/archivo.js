@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-10-29", numero: 302, archivo: "ediciones/2026-10-29.js", portada: "Stagwell compra a Freestar, la venta de publishers" },
   { fecha: "2026-10-28", numero: 301, archivo: "ediciones/2026-10-28.js", portada: "Omnicom gana la media de Coca-Cola en Norteamérica" },
   { fecha: "2026-10-27", numero: 300, archivo: "ediciones/2026-10-27.js", portada: "Stagwell compra Freestar" },
   { fecha: "2026-10-26", numero: 299, archivo: "ediciones/2026-10-26.js", portada: "Pinterest abre su inventario a la programática" },
