@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-02", numero: 306, archivo: "ediciones/2026-11-02.js", portada: "Los compradores le piden cuentas a Google Search" },
   { fecha: "2026-11-01", numero: 305, archivo: "ediciones/2026-11-01.js", portada: "Disney estrena Super Brand Day en TikTok Shop" },
   { fecha: "2026-10-31", numero: 304, archivo: "ediciones/2026-10-31.js", portada: "DoorDash compra Instacart y el retail media se junta" },
   { fecha: "2026-10-30", numero: 303, archivo: "ediciones/2026-10-30.js", portada: "Amazon Ads casi llega a US$20,000 millones" },
