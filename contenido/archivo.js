@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-06", numero: 310, archivo: "ediciones/2026-11-06.js", portada: "ChatGPT Ads se abre a más anunciantes" },
   { fecha: "2026-11-05", numero: 309, archivo: "ediciones/2026-11-05.js", portada: "Google tiene más búsquedas, pero AI Mode monetiza menos" },
   { fecha: "2026-11-04", numero: 308, archivo: "ediciones/2026-11-04.js", portada: "Reddit prueba anuncios en su búsqueda" },
   { fecha: "2026-11-03", numero: 307, archivo: "ediciones/2026-11-03.js", portada: "400 millones de clientes ya compraron con Alexa" },
