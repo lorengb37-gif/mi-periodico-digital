@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-13", numero: 317, archivo: "ediciones/2026-11-13.js", portada: "Google Ads te enseña cuánto te devuelve por bots" },
   { fecha: "2026-11-12", numero: 316, archivo: "ediciones/2026-11-12.js", portada: "LinkedIn lleva su segmentación B2B a la CTV" },
   { fecha: "2026-11-11", numero: 315, archivo: "ediciones/2026-11-11.js", portada: "OpenAI abre perfiles y agentes gratis pa’ marcas en ChatGPT" },
   { fecha: "2026-11-10", numero: 314, archivo: "ediciones/2026-11-10.js", portada: "La FTC acusa a Amazon de cobrar de más en sus subastas" },
