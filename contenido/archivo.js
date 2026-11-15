@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-15", numero: 319, archivo: "ediciones/2026-11-15.js", portada: "DV360 enlazará videos de creadores con un código" },
   { fecha: "2026-11-14", numero: 318, archivo: "ediciones/2026-11-14.js", portada: "Twitch estrena anuncios comprables y saltables" },
   { fecha: "2026-11-13", numero: 317, archivo: "ediciones/2026-11-13.js", portada: "Google Ads te enseña cuánto te devuelve por bots" },
   { fecha: "2026-11-12", numero: 316, archivo: "ediciones/2026-11-12.js", portada: "LinkedIn lleva su segmentación B2B a la CTV" },
