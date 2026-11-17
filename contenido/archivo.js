@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-17", numero: 321, archivo: "ediciones/2026-11-17.js", portada: "Amazon: la cuenta nueva va a nombre del cliente" },
   { fecha: "2026-11-16", numero: 320, archivo: "ediciones/2026-11-16.js", portada: "Amazon contará 63 % menos impresiones" },
   { fecha: "2026-11-15", numero: 319, archivo: "ediciones/2026-11-15.js", portada: "DV360 enlazará videos de creadores con un código" },
   { fecha: "2026-11-14", numero: 318, archivo: "ediciones/2026-11-14.js", portada: "Twitch estrena anuncios comprables y saltables" },
