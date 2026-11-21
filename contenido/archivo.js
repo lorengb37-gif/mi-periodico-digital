@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-21", numero: 325, archivo: "ediciones/2026-11-21.js", portada: "Google arma el carrito del súper con IA" },
   { fecha: "2026-11-20", numero: 324, archivo: "ediciones/2026-11-20.js", portada: "Amazon: un solo tope pa’ Netflix y Prime Video" },
   { fecha: "2026-11-19", numero: 323, archivo: "ediciones/2026-11-19.js", portada: "Microsoft rehace sus pujas: +10 % de valor" },
   { fecha: "2026-11-18", numero: 322, archivo: "ediciones/2026-11-18.js", portada: "The Trade Desk va a medir con compras reales" },
