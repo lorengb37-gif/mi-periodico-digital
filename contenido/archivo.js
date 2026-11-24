@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-24", numero: 328, archivo: "ediciones/2026-11-24.js", portada: "Amazon se anuncia en ChatGPT pa’l Black Friday" },
   { fecha: "2026-11-23", numero: 327, archivo: "ediciones/2026-11-23.js", portada: "ChatGPT inventa la búsqueda que activa tu anuncio" },
   { fecha: "2026-11-22", numero: 326, archivo: "ediciones/2026-11-22.js", portada: "AI Mode: anuncios hasta en la 4.ª pregunta" },
   { fecha: "2026-11-21", numero: 325, archivo: "ediciones/2026-11-21.js", portada: "Google arma el carrito del súper con IA" },
