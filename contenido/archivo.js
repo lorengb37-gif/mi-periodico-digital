@@ -16,6 +16,7 @@
     portada  el titular corto de la nota principal (se ve en el calendario)
 */
 window.ARCHIVO = [
+  { fecha: "2026-11-28", numero: 332, archivo: "ediciones/2026-11-28.js", portada: "Amazon cuenta las ventas de los anuncios en Netflix" },
   { fecha: "2026-11-27", numero: 331, archivo: "ediciones/2026-11-27.js", portada: "La publicidad de tecnología crece y la TV gana" },
   { fecha: "2026-11-26", numero: 330, archivo: "ediciones/2026-11-26.js", portada: "ChatGPT Ads ya reporta alcance y frecuencia" },
   { fecha: "2026-11-25", numero: 329, archivo: "ediciones/2026-11-25.js", portada: "Walmart le abre la tienda a Muse, con sus reglas" },
